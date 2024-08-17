@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Yo bro{% endblock %}
+
+{% block body %}
+<div class="background_color">
+    <div class="body_root_tabs">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
+                type="button" role="tab" aria-controls="home" aria-selected="true" style="border: 0;">Clubs</button>
+            </li>
+        </ul>
+    </div>
+
+    <div class="body_root_content">
+        <div class="tab-content" id="myTabContent">
+             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+                {# SEARCH #}
+                <div class="body_root_form">
+                    <form action="" class="root_form">
+                        <div class="root_form_flex">
+                            <div class="root_serch_icon">
+                            </div>
+                            <label for="form_name">Le nom du club:</label>
+                            <input class="root_serch_bar" type="search" id="form_name" placeholder="" aria-label="Search">
+                        </div>
+                        <div class="root_form_flex">
+                            <div class="root_serch_icon">
+                            </div>
+                            <label for="form_code_postal">Code postal: </label>
+                            <input class="root_serch_bar" type="search" id="form_code_postal" placeholder="" aria-label="Search">
+                        </div>
+                        <div class="root_form_flex">
+                            <div class="root_serch_icon">
+                            </div>
+                            <label for="form_id">Club ID:</label>
+                            <input class="root_serch_bar" type="search" id="form_id" placeholder="" aria-label="Search">
+                        </div>
+                    </form>
+                    <a class="root_btn_creer_club" href="/creerclub_admin"> Creer un club</a>
+                </div>
+
+                {# RESULTA #}
+                <div class="main_root_resulta">
+                    <div class="main_root_resulta_image">
+                        <img src="{{ asset('images/god.jpg') }}" alt="">
+                    </div>
+                <div class="main_root_resulta_text">
+
+                    </div>
+                    <button></button>
+                    <button></button>
+                </div>
+             </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

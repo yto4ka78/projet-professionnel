@@ -1,0 +1,114 @@
+.background_color {
+    background-color: #e3e3e3;
+    padding-top: 30px;
+    flex: 1;
+}
+
+.body_root_content{
+    width: 1163px;
+    min-height: 400px;
+    background-color: white; 
+    margin: auto;
+    border-radius: 0px 5px 0px 0px;
+}
+
+.body_root_tabs{
+    width: 1163px;
+    margin: auto;
+    border-radius: 5px;
+}
+
+.body_root_form {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 20px 0;
+}
+
+.root_form {
+    display: flex;
+    background-color: #e3e3e3;
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 885px;
+    min-height: 100px;
+}
+
+
+.root_form_flex {
+    position: relative;
+    padding: 15px 10px 0 15px;
+}
+
+.root_form_flex label {
+    font-family: 'libre baskerville', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+}
+
+.root_btn_creer_club {
+    margin: 0px 10px;
+    background-color: #007178;
+    color: #ffffff;
+    height: 36px;
+    width: 171px;
+    border-radius: 4px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'K2D', sans-serif;
+    font-weight: 550;
+    font-size: 14px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.5s ease, box-shadow 0.5s ease ;
+}
+
+.root_btn_creer_club:hover {
+    background-color: #005157;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5)
+}
+
+.root_serch_bar {
+    z-index: 3;
+    font-family: 'Libre Baskerville', sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    width: 80%;
+    height: 40%;
+    border-radius: 10px;
+    border: 2px solid black;
+    padding: 2px 5px 2px 30px;
+    transition: border-color 0.30s ease-in-out, box-shadow 0.30s ease-in-out, background-color 1s ease-in-out;
+}
+
+.root_serch_icon {
+    content: url('../images/icon serch_main.png'); 
+    position: absolute;
+    top: 51px;
+    left: 25px;
+    width: 20px; /* Размер иконки */
+}
+
+.main_root_resulta {
+    width: 93%;
+    margin: auto;
+    background-color: #e3e3e3;
+    border-radius: 5px;
+    display: flex;
+    padding: 10px;
+}
+
+.main_root_resulta_image {
+    height: 72px;
+    width: 72px;
+}
+
+.main_root_resulta_image img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 1000px;
+}
+

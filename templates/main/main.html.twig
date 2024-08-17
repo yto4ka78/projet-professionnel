@@ -1,0 +1,99 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MainController!{% endblock %}
+
+{% block body %}
+
+<div class="box">
+
+{# SERCH BAR #}
+
+    <div class="serch_div">
+        <p>Trouve ton groupe</p>
+            <form class="d-flex">
+                <div class="search_container">
+                </div>
+                <input class="serch_bar" type="search" placeholder="Tape le nom du club ou ton interet..." aria-label="Search">
+            </form>
+    </div>
+
+   {# SECTION 1 #}
+   <div class="section_1">
+        <div class="section_1_img">
+            <img src="{{ asset('images/section_2.png') }}" alt="">
+            <div>
+                <p>Ou vous pouvez créer votre propre club!</p>
+                <button>Essayer</button>            
+            </div>
+        </div>  
+   </div>
+
+   {# SECTION 2 #}
+   <div class="section_2">
+        <div class="section_2_text">
+            <p class="section_2_text_title">Groupes populaires</p>
+            <p class="section_2_text_description">SyncYou vous permet de trouver un club par rapport à vos attends</p>
+        </div>
+        <div class="section_2_flex">
+            <div class="section_2_container">
+                <img src="{{ asset('images/section_2_photo_1.png') }}" alt="">
+                <p>Compétences</p>
+            </div>
+
+            <div class="section_2_container">
+                <img src="{{ asset('images/section_2_photo_2.png') }}" alt="">
+                <p>Activité physique</p>
+            </div>
+
+            <div class="section_2_container">
+                <img src="{{ asset('images/section_2_photo_3.png') }}" alt="">
+                <p>Divertissement</p>
+            </div>
+
+            <div class="section_2_container">
+                <img src="{{ asset('images/section_2_photo_4.png') }}" alt="">
+                <p>Voyage</p>
+            </div>
+
+        </div>
+   </div>
+
+   {# SECTION 3 #}
+   <div class="section_3">
+        <div class="section_3_text">
+            <p class="section_3_text_title">Dernières publications</p>
+            <p class="section_3_text_description">Le propriétaire du club  peut faire des publications contenant différentes informations sur son club</p>
+        </div>
+
+        <div class="section_3_posts">
+            <div class="section_3_container">
+                <div class="section_3_container_head">
+                    <div class="section_3_container_head_photo">
+                        <img src="{{ asset('images/section_3_photo_profile.png') }}" alt="">
+                    </div>
+                    <div class="section_3_container_head_text">
+                        <p class="section_3_container_head_name">Station de yoga</p>
+                        <p class="section_3_container_head_city">Orléans</p>
+                        <p class="section_3_container_head_city">Date de publication: 06.07.2024</p>
+                    </div>
+                </div>
+                <div class="section_3_container_body">
+                    <p class="section_3_container_body_text" >Nous invitons tous ceux qui sont intéressés à participer à une séance de
+                        yoga captivante dans le magnifique parc
+                        Marèle ! C'est une occasion parfaite pour découvrir les bases du yoga, profiter de la nature et rencontrer des 
+                        personnes partageant les mêmes idées. La rencontre aura lieu ce week-end et nous sommes ravis d'accueillir tous 
+                        ceux qui souhaitent passer un moment bénéfique pour le corps et l'esprit. N'oubliez pas d'apporter votre tapis
+                        de yoga pour assurer confort et sécurité pendant la pratique. Rejoignez-nous pour explorer l'harmonie et l
+                        'équilibre à travers le yoga dans le cadre verdoyant de notre beau parc!
+                    </p>
+                </div>
+                <div class="section_3_container_photo">
+                    <img src="{{ asset('images/section_3_photo_container.png') }}" alt="">
+                </div>
+            </div>
+        </div>
+        
+   </div>
+</div>
+
+{% endblock %}

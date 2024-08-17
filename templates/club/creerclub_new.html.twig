@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Creer club{% endblock %}
+
+{% block body %}
+<div class="background_photo_profile" id="background_photo_profile">
+    <img src="{{ asset('images/background_photo.png') }}" alt="photo_profile">
+</div>
+<div class="background_color" style="padding-top: 200px;">
+    <div class="creer_club_main">
+        <div class="creer_club_main_flex">
+            <div class="creer_club_photo">
+                <div class="creer_club_photo_size" id="creer_club_photo_size">
+                    <img src="{{ asset('images/god.jpg') }}" alt="">
+                </div>
+                <label for="creer_club_avatarFile_file" class="creer_club_photo_changer_photo"> Ajouter la photo </label>
+                <label for="creer_club_backGroundAvatarFile_file" class="creer_club_photo_changer_photo" style="width: 180px;"> Ajouter la photo du fond </label>
+            </div>
+            
+            <div class="creer_club_info_flex">
+                <div class="creer_club_info_btn">
+                    <button type="submit" class="btn_modifier_profile" style="height: 28px;" id="btn_for_creer_club">
+                        Creer le club
+                    </button>
+                </div>
+                <div style="padding-left: 15px;">
+                    {{ form_start(formClub, {'method': 'post', 'attr' : {'id' : 'form_creation_new_club'}} ) }}
+                        {{ form_label(formClub.Name , null , { 'label_attr': { 'class': 'form_registr' } }) }} <br>
+                        {{ form_widget(formClub.Name , { 'attr': { 'class': 'creer_club_info_form_input' } }) }}
+                        <div class="setting_profile_error_message">
+                        {{ form_errors(formClub.Name) }}
+                        </div>
+
+                        {{ form_label(formClub.description , null , { 'label_attr': { 'class': 'form_registr' } }) }} <br>
+                        {{ form_widget(formClub.description , { 'attr': { 'class': 'creer_club_info_form_input' } }) }}
+                        <div class="setting_profile_error_message">
+                        {{ form_errors(formClub.description) }}
+                        </div>
+
+                </div>
+            </div>
+        </div>
+
+            {{ form_label(formClub.region , null , { 'label_attr': { 'class': 'form_registr' } }) }} <br>
+            {{ form_widget(formClub.region , { 'attr': { 'class': 'creer_club_info_form_input' } }) }}
+            <div class="setting_profile_error_message">
+            {{ form_errors(formClub.region) }}
+            </div>
+
+            {{ form_label(formClub.Owner , null , { 'label_attr': { 'class': 'form_registr' } }) }} <br>
+            {{ form_widget(formClub.Owner , { 'attr': { 'class': 'creer_club_info_form_input' } }) }}
+            <div class="setting_profile_error_message">
+            {{ form_errors(formClub.Owner) }}
+            </div>
+
+
+        {{ form_end(formClub) }}
+        {{ form_errors(formClub) }}
+
+
+        <div id="results" class="creer_club_info_form_owner">
+            <div class="creer_club_info_form_owner_photo">
+            </div>
+            <div class="creer_club_info_form_owner_text">              
+            </div>
+            <div class="creer_club_info_form_owner_flex">
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+{% block javascripts %}
+{{ parent() }} 
+{{ encore_entry_script_tags('creer_club') }}
+{% endblock %}
+
+{% endblock %}

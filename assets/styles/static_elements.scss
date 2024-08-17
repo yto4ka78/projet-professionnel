@@ -1,0 +1,137 @@
+.box {
+    width: 1280px;
+    margin:0 auto;
+}
+
+
+//Navbar
+
+.custom_font {
+    font-family: 'K2D', sans-serif;
+    font-weight: 700; /* Bold */
+    font-size: 20px;
+}
+
+.navbar_button {
+    background-color: #000000; 
+    color: #ffffff; 
+    height: 44px; 
+    width: 88px; 
+    border-radius: 1000px; 
+    border: none; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 550;
+    font-size: 17px; 
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5), 4px 4px 10px rgba(0, 0, 0, 0.3); /* Двойная тень */
+    transition: background-color 0.3s ease;
+}
+
+.navbar_button:hover {
+    background-color: #d5d5d5; /* Цвет фона при наведении */
+}
+
+.mon_profile_bottom {
+    padding: 10px 15px 5px;
+    border-radius: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+}
+
+.mon_profile_bottom:hover {
+    background-color: #d7d7d7;
+}
+
+.mon_profile_bottom.show {
+    background-color: #d7d7d7;
+}
+
+
+//Form registration
+
+
+.form_input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form_registr {
+    font-family: 'K2D', sans-serif;
+    font-weight: 300; /* Bold */
+    font-size: 20px;
+}
+
+.btn_registr {
+    background-color: #000000; 
+    color: #ffffff; 
+    margin-bottom: 15px;
+    height: 46px; 
+    width: 121px; 
+    border-radius: 4px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Lato', sans-serif;
+    font-weight: 550;
+    font-size: 14px; 
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5), 4px 4px 10px rgba(0, 0, 0, 0.3); /* Двойная тень */
+    transition: background-color 0.3s ease;
+}
+
+.btn_registr:hover {
+    background-color: #333333; 
+}
+
+.div_btn_registr{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.text_registration{
+    font-family: 'lato', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.invalid-feedback{
+    margin-top: 0px;
+    margin-bottom: 5px;
+}
+
+.invalid-feedback-login{
+    color: red;
+    display: none;
+    font-size: .875em;
+    margin-top: .25rem;
+    width: 100%;
+}
+
+//FOOTER
+
+.footer{
+    width: 100%;
+    background-color: #6A6A6A;
+    display: flex;
+    justify-content: center
+}
+
+.box_footer {
+    width: 1165px;
+    display: flex;
+    align-items: center;
+}
+
+.box_footer p {
+    color: white;
+    margin: 0;
+    font-family: 'K2D', sans-serif;
+    font-size: 15px;
+}

@@ -1,0 +1,246 @@
+
+//SECTION 1
+
+.serch_div {
+    position: relative;
+    width: 691px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.serch_div p {
+    font-family: 'Libre Baskerville', sans-serif;
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.serch_bar{
+    font-family: 'Libre Baskerville', sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    width: 691px;
+    height: 96px;
+    border-radius: 100px;
+    border: 2px solid black;
+    padding: 10px 80px;
+    transition: border-color 0.30s ease-in-out, box-shadow 0.30s ease-in-out, background-color 1s ease-in-out;
+}
+
+.serch_bar:focus {
+    border-color: rgb(0, 0, 0); /* Цвет границы при фокусе */
+    outline: none; /* Убирает стандартное выделение браузера */
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.5); /* Добавление тени */
+    background-color: rgb(243, 243, 243)
+}
+
+.search_container {
+    content: url('../images/icon serch_main.png'); 
+    position: absolute;
+    left: 30px;
+    bottom: 30px;
+    width: 35px; /* Размер иконки */
+}
+
+//SECTION 1
+
+.section_1 {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.section_1_img {
+    position: relative;
+    width: 1218px;
+    height: 624px;
+}
+
+.section_1_img img {
+    width: 100%;
+    height: 100%;
+}
+
+.section_1_img div {
+    position: absolute;
+    bottom: 0; /* Размещаем div внизу контейнера */
+    left: 0;
+}
+
+.section_1_img p {
+    font-family: 'K2D', sans-serif;
+    font-size: 52px;
+    font-weight: bold;
+    color: white;
+    text-shadow: -2px 4px 4px rgba(0, 0, 0, 1);
+    margin: 0px 0px 0px 40px;
+}
+
+.section_1_img button {
+    margin: 20px 0px 40px 40px;
+    border: none;
+    background-color: #ffffff; 
+    color: #000000; 
+    height: 50px; 
+    width: 141px; 
+    border-radius: 915px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'K2D', sans-serif;
+    font-weight: 550;
+    font-size: 20px; 
+    cursor: pointer;
+    box-shadow: -2px 4px 4px rgba(0, 0, 0, 0.5), 4px 4px 10px rgba(0, 0, 0, 0.3); /* Двойная тень */
+    transition: background-color 0.3s ease;
+}
+
+.section_1_img button:hover {
+    background-color: #d5d5d5; /* Цвет фона при наведении */
+}
+
+//SECTION 2
+
+.section_2 {
+    width: 100%;
+    padding: 10px 0px;
+}
+
+.section_2_text {
+    padding: 0px 25px;
+}
+.section_2_text_title {
+    font-family: 'Libre Baskerville', sans-serif;
+    font-size: 36px;
+    font-weight: 550;
+    margin: 0;
+}
+
+.section_2_text_description {
+    font-family: 'Libre Baskerville', sans-serif;
+    font-size: 20px;
+    font-weight: 550;
+    padding-left: 3px;
+}
+
+.section_2_flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 10px 35px;
+}
+
+.section_2_container {
+    position: relative;
+    width: 271px;
+    height: 257px;
+    border-radius: 10px;
+}
+
+.section_2_container img {
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.section_2_container p {
+    margin: 0 0 5px 5px;
+    position: absolute;
+    bottom: 0; 
+    left: 0;
+    color: white;
+    font-family: 'Libre Baskerville', sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    text-shadow: -1px 3px 4px rgba(0, 0, 0, 1);
+}
+
+//SECTION 3
+.section_3 {
+    width: 100%;
+}
+
+.section_3 > div {
+    padding: 0px 35px;
+}
+
+
+
+.section_3_text_title {
+    font-family: 'Libre Baskerville', sans-serif;
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 3px;
+}
+
+.section_3_text_description {
+    font-family: 'Libre Baskerville', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.section_3_container {
+    width: 1215px;
+    background-color: rgb(209, 209, 209);
+    border-radius: 10px;
+    padding: 15px 20px;
+    margin: 10px 0;
+}
+
+.section_3_container_head {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.section_3_container_head_photo {
+    width: 97px;
+    height: 97px;
+    margin-right: 10px;
+}
+
+.section_3_container_head_photo img {
+    border-radius: 1000px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.section_3_container_head_name {
+    font-family: 'K2D', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.section_3_container_head_city {
+    font-family: 'K2D', sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    margin: 0;
+}
+
+
+.section_3_container_body_text {
+    font-family: 'K2D', sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    overflow: hidden;
+    line-clamp: 3;
+}
+
+.section_3_container_photo {
+    width: 100%;
+    height: 440px;
+}
+
+.section_3_container_photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}

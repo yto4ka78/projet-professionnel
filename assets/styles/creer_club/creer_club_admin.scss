@@ -1,0 +1,142 @@
+
+
+.creer_club_main {
+    position: relative;
+    z-index: 2; 
+    border-radius: 10px 10px 0 0;
+    min-height: 100vh;
+    background-color: white; 
+    margin: auto;
+    width: 1163px;
+    padding: 20px;
+}
+
+.creer_club_photo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.creer_club_photo_size {
+    height: 195px;
+    width: 195px;
+}
+
+.creer_club_photo_size img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 1000px;
+}
+
+.creer_club_photo_changer_photo {
+    margin: 5px;
+    background-color: #000000;
+    color: #ffffff;
+    height: 36px;
+    width: 150px;
+    border-radius: 4px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'K2D', sans-serif;
+    font-weight: 550;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    transition: background-color 0.3s ease;
+}
+
+.creer_club_main_flex {
+    display: flex;
+}
+
+.creer_club_info_flex {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.creer_club_info_btn {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.creer_club_info_form_input {
+    width: 100%;
+    padding: 6px;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.creer_club_info_form_owner {
+    display: none;
+    background-color: #DBDBDB;
+    height: 88px;
+    width: 100%;
+    border-radius: 5px;
+    margin: 20px 0px;
+    padding: 5px 15px;
+}
+
+.creer_club_info_form_owner p {
+    margin: 0;
+}
+
+.creer_club_info_form_owner_photo {
+    width: 72px;
+    height: 72px;
+}
+
+.creer_club_info_form_owner_photo img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 1000px;
+}
+
+.creer_club_info_form_owner_text {
+    margin: 3px 0px 3px 15px;
+    font-family: 'libre baskerville', sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+}
+
+.creer_club_info_form_owner_flex {
+    flex: 1;
+}
+
+.creer_club_info_form_owner_check {
+    display: flex;
+    align-items: center;
+}
+
+.creer_club_info_form_owner_check input {
+    width: 25px;
+    height: 25px;
+    appearance: none; /* Убираем стандартный стиль чекбокса */
+    -webkit-appearance: none; /* Поддержка для старых версий Safari */
+    -moz-appearance: none; /* Поддержка для старых версий Firefox */
+    background-color: #fff;
+    border: 2px solid #8b8b8b;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.creer_club_info_form_owner_check input:checked {
+    background-color: #8b8b8b;
+    border-color: #8b8b8b;
+}
+
+.creer_club_info_form_owner_check input:checked::before {
+    content: "✓";
+    color: white;
+    display: block;
+    font-size: 18px;
+    text-align: center;
+    line-height: 20px;
+}

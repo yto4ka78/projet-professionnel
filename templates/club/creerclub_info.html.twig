@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Yo bro{% endblock %}
+
+{% block body %}
+<div class="box">
+    <div class="div_title_text">
+        <p class="title_text">Règlement pour créer un club</p>
+    </div>
+    <div>
+        <p class="title_text_article">Point 1 : Conformité aux lois et à la sécurité</p>
+        <p class="article_text">La création d'un club doit strictement respecter les lois de la Fédération
+        Française (FF). Le créateur du club est responsable de la conformité à toutes
+        les règles et normes établies. Le club ne doit représenter aucune menace pour
+        la vie et la santé des participants. Le non-respect de la législation peut
+        entraîner des conséquences graves, y compris des amendes et la fermeture du club.
+        Avant de commencer le processus de création du club, il est recommandé de se
+        familiariser avec les lois pertinentes et de consulter des experts juridiques ou
+        des représentants de la fédération.</p>
+        <p class="title_text_article">Point 2 : Contactez la mairie</p>
+        <p class="article_text">Pour créer un club, vous devez contacter la mairie de la ville la plus proche qui
+        collabore avec notre plateforme. La mairie fournit un soutien et des ressources
+        pour l'enregistrement et le démarrage des activités du club. Pour trouver la
+        mairie la plus proche qui collabore avec nous, utilisez la liste des mairies
+        ci-dessous. Les autorités locales vous aideront dans le processus d'enregistrement
+        et vous fourniront toutes les informations nécessaires pour lancer avec succès votre club.</p>
+        <p class="title_text_article">Point 3 : Remplir et soumettre les documents</p>
+        <p class="article_text">Pour créer un club, téléchargez le document ci-dessous, remplissez-le et apportez-le à la mairie avec les 
+        documents suivants :
+        <ul>
+            <li>Formulaire de création de club</li>
+            <li>Passeport</li>
+        </ul>
+        Assurez-vous que tous les champs du formulaire sont correctement remplis et que tous les documents 
+        nécessaires sont joints. La mairie vérifiera vos informations et complétera le processus d'enregistrement.</p>
+    </div>
+    <a href="">
+        <img src="{{ asset('images/icon_pdf.png') }}" alt="">
+    </a>
+</div>
+
+{% endblock %}
