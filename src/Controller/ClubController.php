@@ -20,7 +20,7 @@ use Psr\Log\LoggerInterface;
 
 class ClubController extends AbstractController {
 
-    #[Route('/profile_club/{id}', name: 'club_profile')]
+    #[Route('/club_profile/{id}', name: 'club_profile')]
     public function index(ClubRepository $clubRepository, int $id, EntityManagerInterface $entityManager, LoggerInterface $logger):Response 
     {
         $user = $this->getUser();
@@ -176,7 +176,15 @@ class ClubController extends AbstractController {
         $club = $clubRepository-> find($id);
         $form = $this->createForm(CreerClubType::class, $club);
 
-        if ($user->getId() === $club->getOwner()) 
+        
+        if ($this->isGranted('ROLE_ROOT')){
+            $form->handleRequest($request);
+            if ($form->isSubmitted() && $form->isValid()) {
+                $entityManager->persist($club);
+                $entityManager->flush();
+                return $this->redirectToRoute('club_profile', ['id' => $club->getId()]);
+            }        
+        } elseif ($user->getId() === $club->getOwner()) 
         {
             $form->remove('Owner');
             $form->handleRequest($request);
@@ -244,6 +252,24 @@ class ClubController extends AbstractController {
         $club->removePost($postDeleted);
         $entityManager->flush();
         return $this->redirectToRoute('club_profile', ['id' => $club->getId()]);
+    }
+
+    #[Route('/delete_club/{idClub}/', name: 'app_club_delete')]
+    public function deleteClub (int $idClub, EntityManagerInterface $entityManager, ClubRepository $clubrepository): Response
+    {
+        $user = $this->getUser();
+        if (!$user instanceof User) {
+            return $this->redirectToRoute('home');
+        }
+        $club = $entityManager->getRepository(Club::class)->findOneBy(['id' => $idClub]);
+        
+        if (!$club || $club->getOwner() !== $user->getId()) {
+            return $this->redirectToRoute('home');
+        }
+        
+        $entityManager->remove($club);
+        $entityManager->flush();
+        return $this->redirectToRoute('app_profile');
     }
 
 }

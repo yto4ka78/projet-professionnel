@@ -8,6 +8,7 @@ use App\Form\AvatarUploadFile;
 use App\Form\BackGroundAvatarUploadFile;
 use App\Form\SettingProfileFormType;
 use App\Repository\ClubRepository;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -43,13 +44,22 @@ class ProfileController extends AbstractController
                 'user' => $user,
                 'clubs' => $clubs
             ]);
+        } else {
+            return $this->redirectToRoute('home');
         }
     }
 
-    #[Route('/modifier_profile', name: 'app_profile_setting')]
-    public function profile_setting(Request $request,UserPasswordHasherInterface $passwordEncoder): Response
+    #[Route('/modifier_profile/{id}', name: 'app_profile_setting')]
+    public function profile_setting(int $id, Request $request,UserPasswordHasherInterface $passwordEncoder, UserRepository $userrepository): Response
     {
-        $user = $this->security->getUser();
+        /** @var \App\Entity\User|null $userActual */
+        $userActual = $this->security->getUser();
+        $user = $userrepository->find(['id' => $id]);
+
+        if (!$userActual || $userActual->getId() !== $user->getId()) {
+            return $this->redirectToRoute('home');
+        }
+
         $form = $this->createForm(SettingProfileFormType::class, $user);
         $form->handleRequest($request);
 
@@ -97,6 +107,7 @@ class ProfileController extends AbstractController
            'formAvatar' => $formAvatar->createView(),
            'formBackGround' => $formBackGround->createView(),]);
     }
+
 
     #[Route('/profile/{id}', name: 'app_profile_user')]
     public function regerderProfile(int $id, Request $request, EntityManagerInterface $entityManager, ClubRepository $clubRepository): Response

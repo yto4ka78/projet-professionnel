@@ -8,9 +8,6 @@
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
         <style>
             body {
                 display: flex;
@@ -32,7 +29,7 @@
         {% endblock %}
         </div>
 
-
+        {# <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> #}
 
         {# FOOTER #}
         <div class="footer">
@@ -54,5 +51,8 @@
             </div>
         </div>
 
+        {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+        {% endblock %}
     </body>
 </html>

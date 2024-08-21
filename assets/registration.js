@@ -68,9 +68,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 window.location.href = data.redirect_url;
             }
         } else {
-            // Показать ошибку
             feedback.textContent = "L'adresse e-mail ou le mot de passe est incorrect.";
             feedback.style.display = 'block';
         }
     }
 });
+
+

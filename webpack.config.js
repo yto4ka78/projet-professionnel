@@ -1,4 +1,5 @@
 const Encore = require('@symfony/webpack-encore');
+const webpack = require('webpack');
 
 // Manually configure the runtime environment if not already configured yet by the "encore" command.
 // It's useful when you use tools that rely on webpack.config.js file.
@@ -26,6 +27,9 @@ Encore
     .addEntry('creer_club', './assets/creer_club.js')
     .addEntry('modifier_club', './assets/modifier_club.js')
     .addEntry('new_post', '/assets/new_post.js')
+    .addEntry('main', '/assets/main.js')
+    .addEntry('pagination_root', '/assets/pagination_root.js')
+    .addEntry('pagination_club', '/assets/pagination_club.js')
 
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
@@ -76,7 +80,8 @@ Encore
     //.enableIntegrityHashes(Encore.isProduction())
 
     // uncomment if you're having problems with a jQuery plugin
-    //.autoProvidejQuery()
+    .autoProvidejQuery()
+    
     .copyFiles({
         from: './assets/fonts',
         to: 'fonts/[path][name].[ext]'

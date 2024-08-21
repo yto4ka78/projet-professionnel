@@ -10,104 +10,49 @@
             <div class="recherche_page_form_flex">
                 <div class="root_serch_icon">
                 </div>
-                <label for="form_name">Le nom du club:</label>
-                <input class="root_serch_bar" type="search" id="form_name" placeholder="" aria-label="Search">
+                <label for="form_name">Le nom du club :</label>
+                <input class="root_serch_bar" type="search" id="form_name" aria-label="Search" value="{{ search_word }}">
             </div>
             <div class="recherche_page_form_flex">
                 <div class="root_serch_icon">
                 </div>
-                <label for="form_code_postal">Code postal: </label>
-                <input class="root_serch_bar" type="search" id="form_code_postal" placeholder="" aria-label="Search">
-            </div>
-            <div class="recherche_page_form_flex">
+                <label for="form_code_postal">Region    : </label>
+                <select class="root_serch_bar" id="form_code_postal" aria-label="Search">
+                    <option value="" disabled selected>Region</option>
+                    <option value="Nouvelle Aquitaine">Nouvelle Aquitaine</option>
+                    <option value="Bretagne">Bretagne</option>
+                    <option value="Bourgogne">Bourgogne</option>
+                    <option value="Normandie">Normandie</option>
+                    <option value="Île de France">Île de France</option>
+                    <option value="Grand-Est">Grand-Est</option>
+                    <option value="Auvergne Alpes">Auvergne Alpes</option>
+                    <option value="Pays de la Loire">Pays de la Loire</option>
+                    <option value="Hauts-de-France">Hauts-de-France</option>
+                    <option value="Val de Loire">Val de Loire</option>
+                    <option value="Occitanie">Occitanie</option>
+                    <option value="Corse">Corse</option>
+                    <option value="Provence Alpes">Provence Alpes</option>
+                    <option value="Marseille">Marseille</option>
+                </select>
             </div>
         </form>
     </div>
-
+    {# RESULTA #}
     <p class="recherche_page_text_resulta">Resulta de recherche:</p>
-    <div class="recherche_page_wrap_resulta">
-        {% for club in clubs %}
-        <a href="{{ path('club_profile', { 'id': club.id }) }}" class="recherche_page_resulta_link">
-            <div class="recherche_page_resulta">
-                <div class="resulta_photo">
-                    {% if club.Avatar %}
-                    <img src="{{ asset('/uploads/avatars_club/' ~ club.Avatar) }}" alt="">
-                    {% else %}
-                    <img src="{{ asset('images/god.jpg') }}" alt="photo_profile">
-                    {% endif %}
-                </div>
-                <div class="resulta_text">
-                    <p class="resulta_text_name">{{club.name}}</p>
-                    <p class="resulta_text_description">{{club.region}}</p>
-                    <p>{{club.description}}</p>
-                </div>
-            </div>
-        </a>
-
-
-        {% endfor %}
-        
-        <div class="recherche_page_resulta">
-            <div class="resulta_photo">
-                <img src="{{ asset('images/profile_test.png') }}" alt="">
-            </div>
-            <div class="resulta_text">
-                <p class="resulta_text_name">Tenis</p>
-                <p class="resulta_text_description">Orleans</p>
-                <p>Le groupe des amateurs de tennis dans notre 
-                club est l'endroit idéal pour tous ceux qui souhaitent
-                 profiter de ce jeu dynamique et passionnant. Nous nous réunissons 
-                 régulièrement sur les courts de tennis pour des matchs amicaux, des
-                  entraînements et des échanges...</p>
-            </div>
-        </div>
-
-        <div class="recherche_page_resulta">
-            <div class="resulta_photo">
-                <img src="{{ asset('images/profile_test.png') }}" alt="">
-            </div>
-            <div class="resulta_text">
-                <p class="resulta_text_name">Tenis</p>
-                <p class="resulta_text_description">Orleans</p>
-                <p>Le groupe des amateurs de tennis dans notre 
-                club est l'endroit idéal pour tous ceux qui souhaitent
-                 profiter de ce jeu dynamique et passionnant. Nous nous réunissons 
-                 régulièrement sur les courts de tennis pour des matchs amicaux, des
-                  entraînements et des échanges...</p>
-            </div>
-        </div>
-
-        <div class="recherche_page_resulta">
-            <div class="resulta_photo">
-                <img src="{{ asset('images/profile_test.png') }}" alt="">
-            </div>
-            <div class="resulta_text">
-                <p class="resulta_text_name">Tenis</p>
-                <p class="resulta_text_description">Orleans</p>
-                <p>Le groupe des amateurs de tennis dans notre 
-                club est l'endroit idéal pour tous ceux qui souhaitent
-                 profiter de ce jeu dynamique et passionnant. Nous nous réunissons 
-                 régulièrement sur les courts de tennis pour des matchs amicaux, des
-                  entraînements et des échanges...</p>
-            </div>
-        </div>
-
-        <div class="recherche_page_resulta">
-            <div class="resulta_photo">
-                <img src="{{ asset('images/profile_test.png') }}" alt="">
-            </div>
-            <div class="resulta_text">
-                <p class="resulta_text_name">Tenis</p>
-                <p class="resulta_text_description">Orleans</p>
-                <p>Le groupe des amateurs de tennis dans notre 
-                club est l'endroit idéal pour tous ceux qui souhaitent
-                 profiter de ce jeu dynamique et passionnant. Nous nous réunissons 
-                 régulièrement sur les courts de tennis pour des matchs amicaux, des
-                  entraînements et des échanges...</p>
-            </div>
-        </div>
+    <div class="recherche_page_wrap_resulta" id="div_resulta_root">
 
     </div>
-
+    <div class="pagination" id="div_pagination">
+        <button id="botton_change_page_left" class="botton_change_page_left">&lt;</button>
+        <div id="pagination" class="pagination-container"></div>
+        <button id="botton_change_page_right" class="botton_change_page_left">&gt;</button>
+    </div>
 </div>
+
+
+{% block javascripts %} 
+{{ parent() }}
+{{ encore_entry_script_tags('pagination_club') }}
+{% endblock %}
+
 {% endblock %}

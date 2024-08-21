@@ -1,4 +1,3 @@
-// CSS
 
 import './styles/global.scss';
 
@@ -21,4 +20,5 @@ import './styles/club_profile.scss';
 import './styles/root.scss';
 
 import 'bootstrap/dist/js/bootstrap.bundle.min';
+
 

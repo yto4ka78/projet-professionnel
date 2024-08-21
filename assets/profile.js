@@ -1,7 +1,7 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('form_setting_profile');
-    const btnModifierProfile = document.querySelector('.btn_modifier_profile');
+    const btnModifierProfile = document.getElementById('btn_modifier_profile');
 
     if (btnModifierProfile) {
         btnModifierProfile.addEventListener('click', function(event) {

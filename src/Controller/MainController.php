@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Repository\PostRepository;
 use App\Form\RegistrationFormType;
 use App\Service\GlobalFormService;
 use App\Security\AppCustomAuthenticator;
@@ -18,10 +19,15 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class MainController extends AbstractController
 {
     #[Route('/', name: 'home')]
-    public function index(GlobalFormService $globalFormService, Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, AppCustomAuthenticator $authenticator, EntityManagerInterface $entityManager): Response
+    public function index(PostRepository $postrepository): Response
     {
-        
-        return $this->render('main/main.html.twig');
+        $allPosts = $postrepository->findAll();
+        // MIXE ARRAY
+        shuffle($allPosts);
+        $posts = array_slice($allPosts, 0, 2);
+        return $this->render('main/main.html.twig',[
+            'posts' => $posts
+        ]);
     }
 }
 

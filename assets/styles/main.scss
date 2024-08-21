@@ -77,7 +77,7 @@
     margin: 0px 0px 0px 40px;
 }
 
-.section_1_img button {
+.section_1_img a {
     margin: 20px 0px 40px 40px;
     border: none;
     background-color: #ffffff; 
@@ -89,6 +89,7 @@
     justify-content: center;
     align-items: center;
     font-family: 'K2D', sans-serif;
+    text-decoration: none;
     font-weight: 550;
     font-size: 20px; 
     cursor: pointer;
@@ -96,7 +97,7 @@
     transition: background-color 0.3s ease;
 }
 
-.section_1_img button:hover {
+.section_1_img a:hover {
     background-color: #d5d5d5; /* Цвет фона при наведении */
 }
 

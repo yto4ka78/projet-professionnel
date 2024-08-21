@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Yo bro{% endblock %}
+{% block title %}Profile {{user.name}}{% endblock %}
 
 {% block body %}
 <div style="background-color: #e3e3e3;">
@@ -33,21 +33,32 @@
                     {% else %}
                         <p class="name_text_head_profile">{{ user.participation }}</p>
                     {% endif %}
-                    {% if user.description is null %}
-                        
+
+                    {% if user.description %}
+                        <p class="name_text_head_profile">{{ user.description }}</p>                       
                     {% else %}
-                    <p class="name_text_head_profile">{{ user.description }}</p>
+
                     {% endif %}
             </div>
             <div class="div_with_btn_head_profile">
+                {% if is_granted('ROLE_ROOT') %}
                 <a class="btn_modifier_profile" style="height: 28px;" href="/root">
                     Root Panel
                 </a>
-                <a class="btn_modifier_profile" style="height: 28px;" href="/modifier_profile">
+                <a class="btn_modifier_profile" style="height: 28px;" href="{{ path('app_profile_setting_root', {'id': user.id}) }}">
                     Modifier profile
                 <span class="divider_btn_modifier_profile"></span>
                 <img src="{{ asset('images/modifier_profile_btn_logo.png') }}" alt="Gear Icon">
                 </a>
+                {% elseif app.user.id == user.id %}
+                <a class="btn_modifier_profile" style="height: 28px;" href="{{ path('app_profile_setting', {'id': user.id}) }}">
+                    Modifier profile
+                <span class="divider_btn_modifier_profile"></span>
+                <img src="{{ asset('images/modifier_profile_btn_logo.png') }}" alt="Gear Icon">
+                </a>
+                {% else %}
+                {% endif %}
+
             </div>
         </div>
         {# BODY PROFILE #}

@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Creer club{% endblock %}
+{% block title %}Modifier club{% endblock %}
 
 {% block body %}
 <div class="background_photo_profile" id="background_photo_profile">
@@ -10,7 +10,7 @@
     <img src="{{ asset('images/background_photo.png') }}" alt="photo_profile">
     {% endif %}
 </div>
-<div class="background_color" style="padding-top: 200px;">
+<div class="background_color">
     <div class="creer_club_main">
         <div class="creer_club_main_flex">
             <div class="creer_club_photo">
@@ -27,6 +27,9 @@
             
             <div class="creer_club_info_flex">
                 <div class="creer_club_info_btn">
+                    <a href="{{path('app_club_delete',{'idClub': club.id}) }}" class="btn_modifier_profile" style="height: 28px;">
+                        Supprimer le club
+                    </a>
                     <button type="submit" class="btn_modifier_profile" style="height: 28px;" id="btn_for_creer_club">
                         Sauvegarder
                     </button>
@@ -54,6 +57,13 @@
             <div class="setting_profile_error_message">
             {{ form_errors(form.region) }}
             </div>
+
+            {% if is_granted('ROLE_ROOT') %} 
+                {{ form_label(form.Owner , null , { 'label_attr': { 'class': 'form_registr' } }) }} <br>
+                {{ form_widget(form.Owner , { 'attr': { 'class': 'creer_club_info_form_input' } }) }}
+                <div class="setting_profile_error_message">
+                {{ form_errors(form.Owner) }}
+            {% endif %}
 
         {{ form_end(form) }}
         {{ form_errors(form) }}

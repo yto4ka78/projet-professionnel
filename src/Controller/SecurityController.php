@@ -36,10 +36,7 @@ class SecurityController extends AbstractController
             return new JsonResponse(['success' => true, 'message' => 'Login successful']);
         }
 
-        return $this->render('security/login.html.twig', [
-            'last_username' => $lastUsername,
-            'error' => $error,
-        ]);
+        return $this->redirectToRoute('home');
     }
 
     #[Route(path: '/logout', name: 'app_logout')]
@@ -50,24 +47,3 @@ class SecurityController extends AbstractController
 }
 
 
-// #[Route(path: '/login', name: 'app_login')]
-// public function login(Request $request, AuthenticationUtils $authenticationUtils): Response
-// {
-
-//     if ($request->isXmlHttpRequest()) {
-//         $error = $authenticationUtils->getLastAuthenticationError();
-//         $lastUsername = $authenticationUtils->getLastUsername();
-
-//         if ($error) {
-//             return new JsonResponse(['success' => false, 'message' => $error->getMessageKey()], 400);
-//         }
-
-//         // В этом примере предполагается, что если нет ошибок, то аутентификация прошла успешно.
-//         return new JsonResponse(['success' => true, 'message' => 'Login successful']);
-//     }
-    
-//     $error = $authenticationUtils->getLastAuthenticationError();
-//     $lastUsername = $authenticationUtils->getLastUsername();
-
-//     return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
-// }

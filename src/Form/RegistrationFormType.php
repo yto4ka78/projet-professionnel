@@ -11,7 +11,6 @@ use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
@@ -58,20 +57,20 @@ class RegistrationFormType extends AbstractType
             ])
             ->add('region', ChoiceType::class, [
                 'choices' => [
-                    'Nouvelle Aquitaine' => 'nouvelle_aquitaine',
-                    'Bretagne' => 'bretagne',
-                    'Bourgogne' => 'bourgogne',
-                    'Normandie' => 'normandie',
-                    'Île-de-France' => 'ile_de_france',
-                    'Grand-Est' => 'grand_est',
-                    'Auvergne Alpes' => 'auvergne_alpes',
-                    'Pays de la Loire' => 'pays_de_la_loire',
-                    'Hauts-de-France' => 'hauts_de_france',
-                    'Val de Loire' => 'val_de_loire',
-                    'Occitanie' => 'occitanie',
-                    'Corse' => 'corse',
-                    'Provence' => 'provence_alpes',
-                    'Marseille' => 'marseille',
+                    'Nouvelle Aquitaine' => 'Nouvelle Aquitaine',
+                    'Bretagne' => 'Bretagne',
+                    'Bourgogne' => 'Bourgogne',
+                    'Normandie' => 'Normandie',
+                    'Île de France' => 'Île de France',
+                    'Grand-Est' => 'Grand-Est',
+                    'Auvergne Alpes' => 'Auvergne Alpes',
+                    'Pays de la Loire' => 'Pays de la Loire',
+                    'Hauts-de-France' => 'Hauts-de-France',
+                    'Val de Loire' => 'Val de Loire',
+                    'Occitanie' => 'Occitanie',
+                    'Corse' => 'Corse',
+                    'Provence Alpes' => 'Provence Alpes',
+                    'Marseille' => 'Marseille',
                 ],
                 'label' => 'Region',
             ]);

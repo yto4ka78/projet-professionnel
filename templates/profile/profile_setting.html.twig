@@ -1,21 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Yo bro{% endblock %}
+{% block title %}Modifier profile{% endblock %}
 
 {% block body %}
-<div style="background-color: #e3e3e3;">
-    <div class="background_photo_profile">
-        {% if user.backGroundAvatar %}
-        <img src="{{ asset('/uploads/avatar_background_user/' ~ user.backGroundAvatar) }}" alt="photo_profile">
-        {% else %}
-        <img src="{{ asset('images/background_photo.png') }}" alt="photo_profile">
-        {% endif %}
-        {{ form_start(formBackGround, { 'method': 'post', 'attr': { 'enctype': 'multipart/form-data' } }) }}
-             {{ form_widget(formBackGround.backGroundAvatarFile) }}
-        <label for="back_ground_avatar_upload_file_backGroundAvatarFile_file" class="btn_profile_setting_background_photo">Changer la photo</label>
-        {{ form_end(formBackGround) }}
+<div class="background_photo_profile">
+    {% if user.backGroundAvatar %}
+    <img src="{{ asset('/uploads/avatar_background_user/' ~ user.backGroundAvatar) }}" alt="photo_profile">
+    {% else %}
+    <img src="{{ asset('images/background_photo.png') }}" alt="photo_profile">
+    {% endif %}
+    {{ form_start(formBackGround, { 'method': 'post', 'attr': { 'enctype': 'multipart/form-data' } }) }}
+         {{ form_widget(formBackGround.backGroundAvatarFile) }}
+    <label for="back_ground_avatar_upload_file_backGroundAvatarFile_file" class="btn_profile_setting_background_photo">Changer la photo</label>
+    {{ form_end(formBackGround) }}
 
-    </div>
+</div>
+<div class="background_color">
     <div class="box_profile">
         {# HEAD PROFILE #}
         <div class="head_profile">
@@ -37,7 +37,7 @@
             {{ form_end(formAvatar) }}
 
 
-            {{ form_start(form, { 'method': 'post', 'action': path('app_profile_setting'), 'attr': { 'id': 'form_setting_profile', 'class' : 'profile_setting_form'} }) }}
+            {{ form_start(form, { 'method': 'post', 'attr': { 'id': 'form_setting_profile', 'class' : 'profile_setting_form'} }) }}
                     <div>
                         {{ form_label(form.name, null, { 'label_attr': { 'class': 'form-label' } }) }}
                         {{ form_widget(form.name, { 'attr': { 'class': 'form-control' } }) }}
@@ -74,7 +74,7 @@
                 {{ form_errors(form) }}
 
             <div class="div_with_btn_head_profile_setting">
-                <button class="btn_modifier_profile" style="height: 28px;">
+                <button class="btn_modifier_profile" style="height: 28px;" id="btn_modifier_profile">
                     Sauvegarder
                 </button>
             </div>

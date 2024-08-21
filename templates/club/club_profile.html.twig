@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Yo bro{% endblock %}
+{% block title %}{{club.name}}{% endblock %}
 
 {% block body %}
 <div style="background-color: #e3e3e3;">
@@ -50,18 +50,26 @@
             </div>
             <div class="div_with_btn_head_profile">
 
-                {% if app.user %}
-                    {% if isOwner %}
-                        <a class="btn_modifier_profile" style="height: 28px;" href="#" onclick="openPostForm()">
-                            Créer un post
-                        </a>
-                        <a class="btn_modifier_profile" style="height: 28px;" href="{{ path('modifier_profile_club', {'id': club.id}) }}">
-                            Modifier club
-                        <span class="divider_btn_modifier_profile"></span>
-                        <img src="{{ asset('images/modifier_profile_btn_logo.png') }}" alt="Gear Icon">
-                        </a>                    
-                    {% endif %}
-                {% endif %}
+            {% if is_granted('ROLE_ROOT') %}
+            <a class="btn_modifier_profile" style="height: 28px;" href="#" onclick="openPostForm()">
+                Créer un post
+            </a>
+            <a class="btn_modifier_profile" style="height: 28px;" href="{{ path('modifier_profile_club', {'id': club.id}) }}">
+                Modifier club
+            <span class="divider_btn_modifier_profile"></span>
+            <img src="{{ asset('images/modifier_profile_btn_logo.png') }}" alt="Gear Icon">
+            </a> 
+            {% elseif isOwner %}
+                <a class="btn_modifier_profile" style="height: 28px;" href="#" onclick="openPostForm()">
+                    Créer un post
+                </a>
+                <a class="btn_modifier_profile" style="height: 28px;" href="{{ path('modifier_profile_club', {'id': club.id}) }}">
+                    Modifier club
+                <span class="divider_btn_modifier_profile"></span>
+                <img src="{{ asset('images/modifier_profile_btn_logo.png') }}" alt="Gear Icon">
+                </a>                    
+            {% endif %}
+
 
             </div>
         </div>
@@ -198,7 +206,7 @@
                             <div class="profile_mes_clubs_resulta">
                                 <div class="main_root_resulta_image">
                                     {% if user.Avatar %}
-                                    <img src="{{ asset('/uploads/avatars_club/' ~ user.Avatar) }}" alt="No photo">
+                                    <img src="{{ asset('/uploads/avatars_user/' ~ user.Avatar) }}" alt="No photo">
                                     {% else %}
                                     <img src="{{ asset('images/god.jpg') }}" alt="">
                                     {% endif %}
@@ -234,7 +242,7 @@
                             <div class="profile_mes_clubs_resulta">
                                 <div class="main_root_resulta_image">
                                     {% if request.user.Avatar %}
-                                    <img src="{{ asset('/uploads/avatars_club/' ~ request.user.Avatar) }}" alt="No photo">
+                                    <img src="{{ asset('/uploads/avatars_user/' ~ request.user.Avatar) }}" alt="No photo">
                                     {% else %}
                                     <img src="{{ asset('images/god.jpg') }}" alt="">
                                     {% endif %}
@@ -247,8 +255,8 @@
 
                                 </div>
                                 <div class="main_root_resulta_btn">
-                                    <a href="{{ path('club_accepte_request', {id: request.id}) }}">Accepter</a>
-                                    <a href="{{ path('club_denied_request', {id: request.id}) }}">Refuser</a>
+                                    <a href="{{ path('club_accepte_request', {id: request.id}) }}" class="activites_post_send" style="text-decoration: none;">Accepter</a>
+                                    <a href="{{ path('club_denied_request', {id: request.id}) }}" class="activites_post_delete">Refuser</a>
                                 </div>
                             </div>
                             {% endfor %}

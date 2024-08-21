@@ -14,17 +14,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 .then(response => response.json())
                 .then(data => {
                     if (data.length > 0) {
-
                         resultsDiv.style.display = 'flex';
-
                         const user = data[0];
-
-                        photoDiv.innerHTML = '<img src="/uploads/avatars_user/' + user.avatar + '" alt="Аватар">';
-
+                        photoDiv.innerHTML = '<img src="/uploads/avatars_user/' + user.avatar + '" alt="Avatar">';
                         textDiv.innerHTML = '<p class="creer_club_info_form_owner_text_name">' + user.name + '</p>' +
                                             '<p class="creer_club_info_form_owner_text_name">' + user.id + '</p>';
-
-                        checkDiv.innerHTML = '<input type="checkbox" id="creer_club_form_check" name="creer_club_form_check">';
                     } else {
                         resultsDiv.style.display = 'none';
                         photoDiv.innerHTML = '';

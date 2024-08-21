@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello MainController!{% endblock %}
+{% block title %}Bienvenu!{% endblock %}
 
 {% block body %}
 
@@ -11,9 +11,9 @@
     <div class="serch_div">
         <p>Trouve ton groupe</p>
             <form class="d-flex">
-                <div class="search_container">
-                </div>
-                <input class="serch_bar" type="search" placeholder="Tape le nom du club ou ton interet..." aria-label="Search">
+                <a class="search_container" id="main_search_icon">
+                </a>
+                <input class="serch_bar" type="search" placeholder="Tape le nom du club ou ton interet..." aria-label="main_search_bar" id="main_search_bar">
             </form>
     </div>
 
@@ -23,11 +23,12 @@
             <img src="{{ asset('images/section_2.png') }}" alt="">
             <div>
                 <p>Ou vous pouvez créer votre propre club!</p>
-                <button>Essayer</button>            
+                <a href="/creerclub">Essayer</a>            
             </div>
         </div>  
    </div>
 
+   
    {# SECTION 2 #}
    <div class="section_2">
         <div class="section_2_text">
@@ -66,34 +67,103 @@
         </div>
 
         <div class="section_3_posts">
-            <div class="section_3_container">
-                <div class="section_3_container_head">
-                    <div class="section_3_container_head_photo">
-                        <img src="{{ asset('images/section_3_photo_profile.png') }}" alt="">
+            {% for post in posts %} 
+            <div class="activites_post">
+                <div class="activites_post_flex">
+                    <div class="activites_post_avatar">
+                        <img src="{{ asset('/uploads/avatars_club/' ~ post.club.Avatar) }}" alt="">                                    
                     </div>
-                    <div class="section_3_container_head_text">
-                        <p class="section_3_container_head_name">Station de yoga</p>
-                        <p class="section_3_container_head_city">Orléans</p>
-                        <p class="section_3_container_head_city">Date de publication: 06.07.2024</p>
+                    <div class="activites_post_text_div">
+                        <p class="activites_post_text_solid">{{post.club.Name}}</p>
+                        <p class="activites_post_text">{{post.club.region}}</p>
+                        <p class="activites_post_text">Date de publication: </p>
+                        <p class="activites_post_text">{{ post.updatedAt|date('d.m.Y H:i') }}</p>
+                    </div>
+                    <div style="flex: 1;">
+
                     </div>
                 </div>
-                <div class="section_3_container_body">
-                    <p class="section_3_container_body_text" >Nous invitons tous ceux qui sont intéressés à participer à une séance de
-                        yoga captivante dans le magnifique parc
-                        Marèle ! C'est une occasion parfaite pour découvrir les bases du yoga, profiter de la nature et rencontrer des 
-                        personnes partageant les mêmes idées. La rencontre aura lieu ce week-end et nous sommes ravis d'accueillir tous 
-                        ceux qui souhaitent passer un moment bénéfique pour le corps et l'esprit. N'oubliez pas d'apporter votre tapis
-                        de yoga pour assurer confort et sécurité pendant la pratique. Rejoignez-nous pour explorer l'harmonie et l
-                        'équilibre à travers le yoga dans le cadre verdoyant de notre beau parc!
-                    </p>
+                <div style="padding: 0px 10px;">
+                    <p class="activites_post_text"> {{post.content}} </p>
                 </div>
-                <div class="section_3_container_photo">
-                    <img src="{{ asset('images/section_3_photo_container.png') }}" alt="">
-                </div>
+                {% if post.images %}
+                    <div class="activites_post_photos 
+                        {% if post.images|length == 1 %}activite_one_photo 
+                        {% elseif post.images|length == 2 %}activite_less_2_photo 
+                        {% elseif post.images|length > 2 %}activite_more_2_photo {% endif %} ">
+                        
+                        {% for image in post.images %}
+                            {% if loop.index <= 6 %}
+                            <a href="{{ asset(image) }}" target="_blank">
+                                <img src="{{ asset(image) }}" alt="Ooups">
+                            </a>
+                            {% endif %}
+                        {% endfor %}
+                    </div>  
+                    <div class="activite_post_all_photo">
+                        {% if post.images|length > 6 %}
+                            <a href="{{ path('post_all_photos', {'id': post.id }) }}" 
+                            id="post_all_photos" 
+                            class="activite_regarder_photo_res" 
+                            data-post-id="{{ post.id }}"
+                            data-bs-toggle="modal" data-bs-target="#modal_for_post_photo">Plus de photo...</a>
+                        {% endif %}
+                    </div>                             
+                {% endif %}
             </div>
+            <div id="club-info" data-club-id="{{ post.club.id }}"></div>
+            {% endfor %}
         </div>
         
    </div>
 </div>
+
+<div class="modal fade" id="modal_for_post_photo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Toutes les photos</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="modal-images-container">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# {% block javascripts %} 
+{{ parent() }}
+{{ encore_entry_script_tags('main') }}
+{% endblock %} #}
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Функция для перенаправления
+        function performSearch() {
+            const searchValue = document.getElementById('main_search_bar').value;
+    
+            if (searchValue.trim() !== "") {
+                // Перенаправляем на страницу /recherche и вставляем значение в параметр
+                window.location.href = `/recherche?form_name=${encodeURIComponent(searchValue)}`;
+            }
+        }
+    
+        // Отслеживаем нажатие клавиши Enter в поле ввода
+        document.getElementById('main_search_bar').addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault(); // Отключаем стандартное поведение Enter (отправку формы)
+                performSearch(); // Вызываем функцию поиска
+            }
+        });
+    
+        // Отслеживаем клик на иконку поиска
+        document.getElementById('main_search_icon').addEventListener('click', function() {
+            performSearch(); // Вызываем функцию поиска при клике на иконку
+        });
+    });
+    
+</script>
 
 {% endblock %}

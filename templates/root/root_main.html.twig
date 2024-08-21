@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Yo bro{% endblock %}
+{% block title %}Root{% endblock %}
 
 {% block body %}
 <div class="background_color">
@@ -10,16 +10,19 @@
                 <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
                 type="button" role="tab" aria-controls="home" aria-selected="true" style="border: 0;">Clubs</button>
             </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="user-tab" data-bs-toggle="tab" data-bs-target="#user"
+                type="button" role="tab" aria-controls="user" aria-selected="true" style="border: 0;">User</button>
+            </li>
         </ul>
     </div>
 
     <div class="body_root_content">
         <div class="tab-content" id="myTabContent">
+                    {# CLUB #}
              <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-
-                {# SEARCH #}
                 <div class="body_root_form">
-                    <form action="" class="root_form">
+                    <form action="/" class="root_form">
                         <div class="root_form_flex">
                             <div class="root_serch_icon">
                             </div>
@@ -29,7 +32,7 @@
                         <div class="root_form_flex">
                             <div class="root_serch_icon">
                             </div>
-                            <label for="form_code_postal">Code postal: </label>
+                            <label for="form_code_postal">Region: </label>
                             <input class="root_serch_bar" type="search" id="form_code_postal" placeholder="" aria-label="Search">
                         </div>
                         <div class="root_form_flex">
@@ -41,21 +44,55 @@
                     </form>
                     <a class="root_btn_creer_club" href="/creerclub_admin"> Creer un club</a>
                 </div>
+                
+                <div style="padding: 20px;" id="div_resulta_root">
 
-                {# RESULTA #}
-                <div class="main_root_resulta">
-                    <div class="main_root_resulta_image">
-                        <img src="{{ asset('images/god.jpg') }}" alt="">
-                    </div>
-                <div class="main_root_resulta_text">
-
-                    </div>
-                    <button></button>
-                    <button></button>
                 </div>
-             </div>
+                <div class="pagination" id="div_pagination">
+                    <button id="botton_change_page_left" class="botton_change_page_left">&lt;</button>
+                    <div id="pagination" class="pagination-container"></div>
+                    <button id="botton_change_page_right" class="botton_change_page_left">&gt;</button>
+                </div>
+            </div>
+
+                {# USER #}
+                <div class="tab-pane fade" id="user" role="tabpanel" aria-labelledby="user-tab">
+                    <div class="body_root_form">
+                        <form action="" class="root_form">
+                            <div class="recherche_page_form_flex">
+                                <div class="root_serch_icon">
+                                </div>
+                                <label for="user_form_name">Nom:</label>
+                                <input class="root_serch_bar" type="search" id="user_form_name" placeholder="" aria-label="Search">
+                            </div>
+                            <div class="recherche_page_form_flex">
+                                <div class="root_serch_icon">
+                                </div>
+                                <label for="user_form_ID">User ID: </label>
+                                <input class="root_serch_bar" type="search" id="user_form_ID" placeholder="" aria-label="Search">
+                            </div>
+                            <div class="recherche_page_form_flex">
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <div style="padding: 20px;" id="user_div_resulta_root">
+    
+                    </div>
+                    <div class="pagination" id="div_pagination">
+                        <button id="user_botton_change_page_left" class="botton_change_page_left">&lt;</button>
+                        <div id="user_pagination" class="pagination-container"></div>
+                        <button id="user_botton_change_page_right" class="botton_change_page_left">&gt;</button>
+                    </div>
+                </div>
+
         </div>
     </div>
 </div>
+
+{% block javascripts %}
+{{ parent() }} 
+{{ encore_entry_script_tags('pagination_root') }}
+{% endblock %}
 
 {% endblock %}

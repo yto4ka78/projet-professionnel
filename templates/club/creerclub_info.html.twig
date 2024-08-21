@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Yo bro{% endblock %}
+{% block title %}Club information{% endblock %}
 
 {% block body %}
 <div class="box">
@@ -26,17 +26,36 @@
         et vous fourniront toutes les informations nécessaires pour lancer avec succès votre club.</p>
         <p class="title_text_article">Point 3 : Remplir et soumettre les documents</p>
         <p class="article_text">Pour créer un club, téléchargez le document ci-dessous, remplissez-le et apportez-le à la mairie avec les 
-        documents suivants :
+        documents suivants :</p>
         <ul>
-            <li>Formulaire de création de club</li>
-            <li>Passeport</li>
+            <li class="article_text">Formulaire de création de club</li>
+            <li class="article_text">Passeport</li>
         </ul>
-        Assurez-vous que tous les champs du formulaire sont correctement remplis et que tous les documents 
+        <p class="article_text">Assurez-vous que tous les champs du formulaire sont correctement remplis et que tous les documents 
         nécessaires sont joints. La mairie vérifiera vos informations et complétera le processus d'enregistrement.</p>
     </div>
-    <a href="">
+    <a href="{{ asset('file/Sitnikov_CV.pdf') }}" class="creer_club_btn_download" target="_blank">
         <img src="{{ asset('images/icon_pdf.png') }}" alt="">
+        formulaire de création de club
     </a>
+
+    <p class="title_text_article_bold">Liste des mairies qui coopèrent avec la plateforme</p>
+    <div class="list_of_region_flex">
+        <div class="list_of_region">
+            <p class="name_of_region">Centre-Val de Loire</p>
+            <p class="name_of_city">Orléans (45000)</p>
+            <p class="name_of_city">Tours (37000)</p>
+            <p class="name_of_city">Bourges (18000)</p>
+            <p class="name_of_city">Chartres (28000)</p>
+        </div>
+        <div>
+            <p class="name_of_region">Occitanie</p>
+            <p class="name_of_city">Toulouse (31000)</p>
+            <p class="name_of_city">Montpellier (34000)</p>
+            <p class="name_of_city">Perpignan (66000)</p>
+        </div>
+    </div>
+
 </div>
 
 {% endblock %}

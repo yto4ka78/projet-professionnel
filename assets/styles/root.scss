@@ -6,7 +6,6 @@
 
 .body_root_content{
     width: 1163px;
-    min-height: 400px;
     background-color: white; 
     margin: auto;
     border-radius: 0px 5px 0px 0px;
@@ -111,4 +110,44 @@
     object-fit: cover;
     border-radius: 1000px;
 }
+.pagination {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 5px;
+}
 
+
+.pagination-container .active {
+    border: 2px solid black; 
+    box-sizing: border-box;
+}
+
+.pagination-container button {
+    border-radius: 10px;
+    font-size: 20px;
+    width: 30px;
+    border: 2px solid transparent;
+    margin: 0 3px;
+    font-style: italic;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.pagination-container button:hover {
+    background-color: #dddcdc;
+}
+
+.botton_change_page_left {
+    border-radius: 10px;
+    font-size: 20px;
+    width: 30px;
+    border: 2px solid transparent;
+    margin: 0 3px;
+    font-style: italic;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.botton_change_page_left button:hover {
+    background-color: #dddcdc;
+}
