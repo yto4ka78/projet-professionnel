@@ -1,0 +1,29 @@
+parameters:
+    images_directory: '%kernel.project_dir%/public/uploads/images'
+    
+services:
+
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    App\:
+        resource: '../src/'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/Entity/'
+            - '../src/Kernel.php'
+
+    # App\Service\GlobalFormService:
+    #     arguments:
+    #         $formFactory: '@form.factory'
+    #         $security: '@security.helper'
+
+    # App\Twig\GlobalFormExtension:
+    #     tags: ['twig.extension']
+
+    # App\Twig\LoginExtension:
+    #     arguments:
+    #         $authenticationUtils: '@security.authentication_utils'
+    #     tags:
+    #         - { name: 'twig.extension' }
