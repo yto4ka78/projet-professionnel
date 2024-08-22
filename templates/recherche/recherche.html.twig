@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Recherche club{% endblock %}
+
+{% block body %}
+<div class="box" style="padding: 0px 90px;">
+    {# SEARCH #}
+    <div class="body_root_form">
+        <form action="" class="root_form">
+            <div class="recherche_page_form_flex">
+                <div class="root_serch_icon">
+                </div>
+                <label for="form_name">Le nom du club :</label>
+                <input class="root_serch_bar" type="search" id="form_name" aria-label="Search" value="{{ search_word }}">
+            </div>
+            <div class="recherche_page_form_flex">
+                <div class="root_serch_icon">
+                </div>
+                <label for="form_code_postal">Region    : </label>
+                <select class="root_serch_bar" id="form_code_postal" aria-label="Search">
+                    <option value="" disabled selected>Region</option>
+                    <option value="Nouvelle Aquitaine">Nouvelle Aquitaine</option>
+                    <option value="Bretagne">Bretagne</option>
+                    <option value="Bourgogne">Bourgogne</option>
+                    <option value="Normandie">Normandie</option>
+                    <option value="Île de France">Île de France</option>
+                    <option value="Grand-Est">Grand-Est</option>
+                    <option value="Auvergne Alpes">Auvergne Alpes</option>
+                    <option value="Pays de la Loire">Pays de la Loire</option>
+                    <option value="Hauts-de-France">Hauts-de-France</option>
+                    <option value="Val de Loire">Val de Loire</option>
+                    <option value="Occitanie">Occitanie</option>
+                    <option value="Corse">Corse</option>
+                    <option value="Provence Alpes">Provence Alpes</option>
+                    <option value="Marseille">Marseille</option>
+                </select>
+            </div>
+        </form>
+    </div>
+    {# RESULTA #}
+    <p class="recherche_page_text_resulta">Resulta de recherche:</p>
+    <div class="recherche_page_wrap_resulta" id="div_resulta_root">
+
+    </div>
+    <div class="pagination" id="div_pagination">
+        <button id="botton_change_page_left" class="botton_change_page_left">&lt;</button>
+        <div id="pagination" class="pagination-container"></div>
+        <button id="botton_change_page_right" class="botton_change_page_left">&gt;</button>
+    </div>
+</div>
+
+
+{% block javascripts %} 
+{{ parent() }}
+{{ encore_entry_script_tags('pagination_club') }}
+{% endblock %}
+
+{% endblock %}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+
+        <style>
+            body {
+                display: flex;
+                flex-direction: column;
+            }
+            .content {
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+            }
+    
+        </style>
+    </head>
+    <body>
+        {% include '_navbar.html.twig' %}
+        
+        <div class="content">
+        {% block body %}
+        {% endblock %}
+        </div>
+
+        {# <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> #}
+
+        {# FOOTER #}
+        <div class="footer">
+            <div class="box_footer">
+                <img src="{{ asset('images/logo.png') }}" alt="logo" style="width: 109px; height: 113px; ">
+                <div style="margin: 20px 0px 0px 20px;">
+                    <p>© 2024 SyncYou.</p>
+                    <p>Vous pouvez lire des informations détaillées sur notre<br> site Web en suivant le <a href="">lien</a> </p>
+                </div>
+                <div style="flex-grow: 1;"></div>
+                <div style="padding: 20px;">
+                    <p>Contacts: <br> 
+                        Pour créer un club, vous devez contacter la mairie de votre ville. <br> 
+                        Si la mairie de votre ville ne fournit pas les services de notre <br>
+                        plateforme, alors envoyez un message à l'adresse suivante: <br>
+                        erik.sitnikov.fr@gmail.com
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </body>
+</html>

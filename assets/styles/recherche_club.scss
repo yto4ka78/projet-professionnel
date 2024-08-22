@@ -1,0 +1,46 @@
+.recherche_page_form_flex {
+    flex: 1;
+    position: relative;
+    padding: 15px 10px 0 15px;
+}
+
+.recherche_page_form_flex label {
+    font-family: 'libre baskerville', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+}
+
+.recherche_page_wrap_resulta {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.recherche_page_resulta {
+    margin-bottom: 20px;
+    width: 300px;
+    height: 510px;
+    border-radius: 8px 8px 8px 8px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.recherche_page_resulta:hover {
+    background-color:rgb(193, 193, 193) ;
+}
+
+
+.recherche_page_text_resulta {
+    font-family: 'libre baskerville', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    text-decoration: underline;
+}
+
+.recherche_page_resulta_link {
+    display: block; 
+    text-decoration: none !important; 
+    color: inherit !important; 
+}
+

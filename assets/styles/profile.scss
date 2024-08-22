@@ -1,0 +1,258 @@
+
+.background_photo_profile {
+    position: absolute;
+    width: 100%;
+    height: 305px;
+}
+
+.background_photo_profile img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.box_profile {
+    position: relative;
+    padding-top: 200px; /* Половина высоты background_photo_profile */
+    z-index: 2; 
+    width: 1280px;
+    margin: auto;
+}
+
+//HEAD PROFILE
+
+
+.head_profile {
+    padding: 20px;
+    display: flex;
+    width: 1163px;
+    min-height: 249px;
+    background-color: white; 
+    margin: auto;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    position: relative;
+}
+
+.img_head_profile{
+    width: 195px;
+    height: 195px;
+}
+
+.img_head_profile img {
+    width: 100%;
+    height: 100%;
+    border-radius: 1000px;
+    object-fit: cover;
+}
+
+.information_text_head_profile{
+    margin: 30px 0px 0px 15px;
+}
+
+.name_text_head_profile{
+    font-family: 'K2D', sans-serif;
+    font-weight: normal;
+    font-size: 24px;
+    margin: 0px;
+}
+
+.activity_text_head_profile{
+    font-family: 'libre baskerville', sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    margin: 0px;
+}
+
+.btn_modifier_profile { 
+    color: #000000;  
+    background-color: transparent; 
+    border-radius: 5px; 
+    border: 2px solid rgb(177, 177, 177); 
+    display: flex; 
+    align-items: center;
+    padding: 0px 5px; 
+    margin: 0px 8px;
+    font-family: 'libre baskerville', sans-serif; 
+    font-weight: 300;
+    font-size: 14px; 
+    cursor: pointer; 
+    text-decoration: none; 
+    transition: background-color 0.3s ease;
+}
+
+.btn_modifier_profile:hover {
+    background-color: #c9c8c8;
+}
+
+.btn_modifier_profile img {
+    height: 20px; /* Adjust height as necessary */
+}
+
+.divider_btn_modifier_profile {
+    border-left: 2px solid rgb(177, 177, 177);
+    height: 25px;
+    margin: 0 3px;
+}
+
+.flex_grow{
+    flex-grow: 1;
+}
+.div_with_btn_head_profile {
+    display: flex;
+    position: absolute;
+    top: 15px;
+    right: 30px;
+}
+
+
+// BODY PROFILE
+
+.body_profile_tabs{
+    width: 1163px;
+    margin: auto;
+    border-radius: 5px;
+}
+
+.body_profile_content{
+    width: 1163px;
+    min-height: 300px;
+    background-color: white; 
+    margin: auto;
+    border-radius: 0px 5px 0px 0px;
+}
+
+.wrap_resulta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+.profile_mes_clubs {
+    padding: 20px;
+}
+
+.profile_mes_clubs_resulta {
+    width: 100%;
+    margin: auto;
+    background-color: #e3e3e3;
+    border-radius: 5px;
+    display: flex;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.main_root_resulta_text {
+    margin-left: 20px;
+}
+
+.main_root_resulta_text_name {
+    margin: 0;
+    font-family: 'K2D', sans-serif; 
+    font-weight: 300;
+    font-size: 14px; 
+}
+
+.main_root_resulta_text_info {
+    margin: 0;
+    font-family: 'libre baskerville', sans-serif; 
+    font-weight: 900;
+    font-size: 13px; 
+}
+
+.main_root_resulta_flex {
+    flex: 1;
+}
+
+.main_root_resulta_btn {
+    display: flex;
+    align-items: center;
+}
+
+// Modofier profile ------------------------------------------------------------
+
+.nav-link {
+    color:#000000;
+}
+
+.profile_setting_photo_div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn_profile_setting_photo {
+    margin: 10px;
+    background-color: #000000;
+    color: #ffffff;
+    height: 36px;
+    width: 171px;
+    border-radius: 4px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 550;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5), 4px 4px 10px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease;
+}
+
+.btn_profile_setting_photo:hover {
+    background-color: #303030;
+}
+
+.body_profile_setting{
+    height: 300px;
+}
+
+.div_with_btn_head_profile_setting {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+}
+
+.profile_setting_form {
+    margin: 5px 0px 0px 20px;
+    font-family: 'K2D', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+}
+
+.profile_setting_form label{
+margin: 0;
+}
+
+.setting_profile_error_message {
+    color: rgb(168, 0, 0);
+    font-family: 'K2D', sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+}
+
+.btn_profile_setting_background_photo {
+    position: absolute;
+    z-index: 3;
+    left: 50%;
+    top: 30%;
+    transform: translate(-50%, -50%);
+    margin: 10px;
+    background-color: #000000;
+    color: #ffffff;
+    height: 36px;
+    width: 171px;
+    border-radius: 4px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 550;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5), 4px 4px 10px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease;
+}

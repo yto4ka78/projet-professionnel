@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier profile ROOT{% endblock %}
+
+{% block body %}
+<div class="background_photo_profile">
+    {% if user.backGroundAvatar %}
+    <img src="{{ asset('/uploads/avatar_background_user/' ~ user.backGroundAvatar) }}" alt="photo_profile">
+    {% else %}
+    <img src="{{ asset('images/background_photo.png') }}" alt="photo_profile">
+    {% endif %}
+    {{ form_start(formBackGround, { 'method': 'post', 'attr': { 'enctype': 'multipart/form-data' } }) }}
+         {{ form_widget(formBackGround.backGroundAvatarFile) }}
+    <label for="back_ground_avatar_upload_file_backGroundAvatarFile_file" class="btn_profile_setting_background_photo">Changer la photo</label>
+    {{ form_end(formBackGround) }}
+
+</div>
+<div class="background_color">
+    <div class="box_profile">
+        {# HEAD PROFILE #}
+        <div class="head_profile">
+            <div class="profile_setting_photo_div">
+                {% if user.avatar %}
+                <div class="img_head_profile">
+                    <img src="{{ asset('/uploads/avatars_user/' ~ user.Avatar) }}" alt="photo_profile">
+                </div>
+                {% else %}
+                <div class="img_head_profile">
+                    <img src="{{ asset('images/god.jpg') }}" alt="photo_profile">   
+                </div>
+                {% endif %}
+                <label for="avatar_upload_file_avatarFile_file" class="btn_profile_setting_photo">Changer la photo</label>
+            </div>
+            <div class="creer_club_info_flex">
+                <div class="creer_club_info_btn">
+                    <a href="{{path('root_user_delete',{'idUser': user.id}) }}" class="btn_modifier_profile" style="height: 28px;">
+                        Supprimer le profile
+                    </a>
+                    <button class="btn_modifier_profile" style="height: 28px;" type="submit" id="btn_modifier_profile">
+                        Sauvegarder
+                    </button>
+                </div>
+
+                {{ form_start(formAvatar, { 'method': 'post', 'attr': { 'id': 'form_setting_profile_photo','enctype': 'multipart/form-data' } }) }}
+                    {{ form_widget(formAvatar.avatarFile, {'attr' : {'id': 'btn_modifier_profile_photo'} }) }}
+                {{ form_end(formAvatar) }}
+
+
+                {{ form_start(form, { 'method': 'post', 'attr': { 'id': 'form_setting_profile', 'class' : 'profile_setting_form'} }) }}
+                <div>
+                    {{ form_label(form.name, null, { 'label_attr': { 'class': 'form-label' } }) }}
+                    {{ form_widget(form.name, { 'attr': { 'class': 'form-control' } }) }}
+                    <div class="setting_profile_error_message">{{ form_errors(form.name) }}</div>
+                </div>
+
+                <div>
+                    {{ form_label(form.description, null, { 'label_attr': { 'class': 'form-label' } }) }}
+                    {{ form_widget(form.description, { 'attr': { 'class': 'form-control' } }) }}
+                    <div class="setting_profile_error_message">
+                        {{ form_errors(form.description) }}
+                    </div>
+                </div>
+
+                <div>
+                    {{ form_label(form.region, null, { 'label_attr': { 'class': 'form-label' } }) }}
+                    {{ form_widget(form.region, { 'attr': { 'class': 'form-control' } }) }}
+                    <div class="setting_profile_error_message">{{ form_errors(form.region) }}</div>
+                </div>
+
+                {{ form_end(form) }}
+                {{ form_errors(form) }}
+
+
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+{% block javascripts %}
+{{ parent() }} 
+{{ encore_entry_script_tags('profile') }}
+{% endblock %}
+
+{% endblock %}
+
+

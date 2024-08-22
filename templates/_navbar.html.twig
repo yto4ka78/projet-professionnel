@@ -1,0 +1,143 @@
+{# navbar-brand #}
+<div class="box">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffffff;">
+        <div class="container-fluid">
+            <a class="" href="#">
+                <img src="{{ asset('images/logo.png') }}" alt="logo" style="width: 95px;">
+            </a>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent" style="margin-left: 80px;">
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active custom_font" aria-current="page" href="/">Accuile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link custom_font" href="/recherche">Recherche de club</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link custom_font" href="/creerclub" aria-disabled="true">Créer un club</a>
+                </li>
+                </ul>
+            </div>
+            <div>    
+            {% if app.user %}
+            <div class="nav-item dropdown">
+                <button class="nav-link dropdown-toggle mon_profile_bottom" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="{{ asset('images/mon_Profile_Icon.png') }}" alt="logo" style="padding-bottom: 10px;"> Mon profile
+                </button>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="{{ path('app_profile') }}">Voir mon profile</a></li>
+                    <li><a class="dropdown-item" href="{{ path('app_logout') }}">Se deconnecter</a></li>
+                  </ul>
+            </div>
+            {% else %}
+            <button type="button" class="d-flex navbar_button" data-bs-toggle="modal" data-bs-target="#newModal">
+                Sign Up
+            </button>
+            {% endif %}
+            </div>
+        </div>
+    </nav>
+</div>
+
+
+{# Registration  #}
+{# Lol #}
+
+{% set registrationForm = global_form() %}
+
+<div class="modal fade" id="newModal" tabindex="-1" aria-labelledby="newModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <button type="button" class="btn-close" style="position: absolute; right: 0; top: 0; padding: 10px"; data-bs-dismiss="modal" aria-label="Close"></button>
+            <div style="width: 396px; margin: auto;">
+                <img src="{{ asset('images/logo.png') }}" alt="logo" style="width: 98px; padding-top: 10px">
+                <p class="first_text_main_div">Rejoignez-nous en <br> créant votre compte</p>
+                <div id="notification" class="notification">
+                    <p>Email a été envoyé!</p>
+                </div>
+                {{ form_start(registrationForm, { 'method': 'post', 'attr': { 'id': 'form_register_js', 'data-url': path('app_register')} }) }}
+                <div>
+                        {{ form_label(registrationForm.name, null, { 'label_attr': { 'class': 'form_registr' } }) }}
+                        {{ form_widget(registrationForm.name, { 'attr': { 'class': 'form_input' } }) }}
+                        <div class="invalid-feedback">{{ form_errors(registrationForm.name) }}</div>
+                    </div>
+
+                    <div>
+                        {{ form_label(registrationForm.email, null, { 'label_attr': { 'class': 'form_registr' } }) }}
+                        {{ form_widget(registrationForm.email, { 'attr': { 'class': 'form_input' } }) }}
+                        <div class="invalid-feedback">{{ form_errors(registrationForm.name) }}</div>
+                    </div>
+
+                    <div>
+                        {{ form_label(registrationForm.region, null, { 'label_attr': { 'class': 'form_registr' } }) }}
+                        {{ form_widget(registrationForm.region, { 'attr': { 'class': 'form_input' } }) }}
+                        <div class="invalid-feedback">{{ form_errors(registrationForm.name) }}</div>
+                    </div>
+
+                    <div>
+                        {{ form_label(registrationForm.plainPassword.first, null, { 'label_attr': { 'class': 'form_registr' } }) }}
+                        {{ form_widget(registrationForm.plainPassword.first, { 'attr': { 'class': 'form_input' } }) }}
+                        <div class="invalid-feedback">{{ form_errors(registrationForm.name) }}</div>
+                    </div>
+
+                    <div>
+                        {{ form_label(registrationForm.plainPassword.second, null, { 'label_attr': { 'class': 'form_registr', 'style' : 'margin-bottom: 15px;' } }) }}
+                        {{ form_widget(registrationForm.plainPassword.second, { 'attr': { 'class': 'form_input' } }) }}
+                        <div class="invalid-feedback">{{ form_errors(registrationForm.name) }}</div>
+                    </div>
+                    <div class="div_btn_registr">
+                        <button type="submit" class="btn_registr">Register</button>    
+                    </div>
+
+                {{ form_end(registrationForm) }}
+                {{ form_errors(registrationForm) }}
+                <div class="div_btn_registr"> 
+                    <p class="text_registration">Vous avez deja un account? 
+                    <a href="#" style="color: black" data-bs-toggle="modal" data-bs-target="#connect_modal">Se connecter</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# Login  #}
+
+<div class="modal fade" id="connect_modal" tabindex="-1" aria-labelledby="connect_modalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <button type="button" class="btn-close" style="position: absolute; right: 0; top: 0; padding: 10px"; data-bs-dismiss="modal" aria-label="Close"></button>
+            <div style="width: 396px; margin: auto;">
+                <img src="{{ asset('images/logo.png') }}" alt="logo" style="width: 98px; padding-top: 10px">
+                <p class="first_text_main_div" style="margin: 0px;">Bienvenue, veuillez vous <br> connecter à votre compte</p>
+                <form method="post" id="form_login_js" data-url="{{ path('app_login') }}">
+                    
+                    <div class="invalid-feedback-login"></div>
+                    
+                    <label for="inputEmail">Email adresse</label>
+                    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form_input" autocomplete="email" required autofocus>
+
+                    <label for="inputPassword">Mot de passe</label>
+                    <input type="password" name="password" id="inputPassword" class="form_input" autocomplete="current-password" required style="margin-bottom: 10px;">
+
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                    <div class="div_btn_registr">
+                        <button class="btn_registr" type="submit">Sign in</button>
+                    </div>
+                    <div class="div_btn_registr">
+                        <p class="text_registration">Le mot de passe est oublié:
+                        <a href="#" style="color: black" data-bs-toggle="modal" data-bs-target="#">Rappelez le mot de passe</a></p>
+                    </div>
+                    <div class="div_btn_registr">
+                        <p class="text_registration">Vous voulez créer un compte?
+                        <a href="#" style="color: black" data-bs-toggle="modal" data-bs-target="#newModal">Créer un compte</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% block javascripts %}
+{{ encore_entry_script_tags('registration') }}
+{% endblock %}
+

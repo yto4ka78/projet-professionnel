@@ -1,0 +1,141 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profile {{user.name}}{% endblock %}
+
+{% block body %}
+<div style="background-color: #e3e3e3;">
+    <div class="background_photo_profile">
+        {% if user.backGroundAvatar %}
+        <img src="{{ asset('/uploads/avatar_background_user/' ~ user.backGroundAvatar) }}" alt="photo_profile">
+        {% else %}
+        <img src="{{ asset('images/background_photo.png') }}" alt="photo_profile">
+        {% endif %}
+    </div>
+    <div class="box_profile">
+        {# HEAD PROFILE #}
+        <div class="head_profile">
+            <div class="profile_setting_photo_div">
+                {% if user.avatar %}
+                <div class="img_head_profile">
+                    <img src="{{ asset('/uploads/avatars_user/' ~ user.Avatar) }}" alt="photo_profile">
+                </div>
+                {% else %}
+                <div class="img_head_profile">
+                    <img src="{{ asset('images/god.jpg') }}" alt="photo_profile">   
+                </div>
+                {% endif %}
+            </div>
+            <div class="information_text_head_profile">
+                <p class="name_text_head_profile">{{ user.name }}</p>
+                <p class="name_text_head_profile">Participé aux activités: </p>
+                    {% if user.participation is null %}
+                        <p class="activity_text_head_profile">0</p>
+                    {% else %}
+                        <p class="name_text_head_profile">{{ user.participation }}</p>
+                    {% endif %}
+
+                    {% if user.description %}
+                        <p class="name_text_head_profile">{{ user.description }}</p>                       
+                    {% else %}
+
+                    {% endif %}
+            </div>
+            <div class="div_with_btn_head_profile">
+                {% if is_granted('ROLE_ROOT') %}
+                <a class="btn_modifier_profile" style="height: 28px;" href="/root">
+                    Root Panel
+                </a>
+                <a class="btn_modifier_profile" style="height: 28px;" href="{{ path('app_profile_setting_root', {'id': user.id}) }}">
+                    Modifier profile
+                <span class="divider_btn_modifier_profile"></span>
+                <img src="{{ asset('images/modifier_profile_btn_logo.png') }}" alt="Gear Icon">
+                </a>
+                {% elseif app.user.id == user.id %}
+                <a class="btn_modifier_profile" style="height: 28px;" href="{{ path('app_profile_setting', {'id': user.id}) }}">
+                    Modifier profile
+                <span class="divider_btn_modifier_profile"></span>
+                <img src="{{ asset('images/modifier_profile_btn_logo.png') }}" alt="Gear Icon">
+                </a>
+                {% else %}
+                {% endif %}
+
+            </div>
+        </div>
+        {# BODY PROFILE #}
+       <div class="body_profile_tabs">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
+                     type="button" role="tab" aria-controls="home" aria-selected="true" style="border: 0;">Clubs</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="host_club-tab" data-bs-toggle="tab" data-bs-target="#host_club"
+                     type="button" role="tab" aria-controls="host_club" aria-selected="false" style="border: 0;">Mes clubs</button>
+                </li>
+            </ul>
+       </div>
+
+        <div class="body_profile_content">
+            <div class="tab-content" id="myTabContent">
+                {# TAB WITH CLUBS #}
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <div class="wrap_resulta">
+
+                    {% for club in clubs %}
+                        <div class="recherche_page_resulta">
+                            <div class="resulta_photo">
+                                {% if club.Avatar %}
+                                <img src="{{ asset('/uploads/avatars_club/' ~ club.Avatar) }}" alt="No photo">
+                                {% else %}
+                                <img src="{{ asset('images/god.jpg') }}" alt="">    
+                                {% endif %}
+                            </div>
+                            <div class="resulta_text">
+                                <p class="resulta_text_name">{{club.name}}</p>
+                                <p class="resulta_text_description">{{club.region}}</p>
+                                <p>{{club.description}}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                    </div>
+                </div>
+                {# TAB WITH MY CLUBS#}
+                <div class="tab-pane fade" id="host_club" role="tabpanel" aria-labelledby="host_club">
+                    <div class="profile_mes_clubs">
+                        {% for club in clubsHost %}
+                        <div class="profile_mes_clubs_resulta">
+                            <div class="main_root_resulta_image">
+                                {% if club.Avatar %}
+                                <img src="{{ asset('/uploads/avatars_club/' ~ club.Avatar) }}" alt="No photo">
+                                {% else %}
+                                <img src="{{ asset('images/god.jpg') }}" alt="">
+                                {% endif %}
+                            </div>
+                            <div class="main_root_resulta_text">
+                                <p class="main_root_resulta_text_name"> {{ club.name }} </p>
+                                <p class="main_root_resulta_text_info"> Participant: 123</p>
+                                <p class="main_root_resulta_text_info"> ID: {{ club.id }}</p>
+                            </div>
+                            <div class="main_root_resulta_flex">
+
+                            </div>
+                            <div class="main_root_resulta_btn">
+                                <a class="activites_post_cancel" style="text-decoration: none;" href="{{ path('club_profile', {'id': club.id}) }}">Gerer</a>
+                            </div>
+                        </div>
+
+                        {% endfor %}
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>  
+</div>
+
+ {# FOOTER #}
+
+{% endblock %}

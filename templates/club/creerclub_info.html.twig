@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Club information{% endblock %}
+
+{% block body %}
+<div class="box">
+    <div class="div_title_text">
+        <p class="title_text">Règlement pour créer un club</p>
+    </div>
+    <div>
+        <p class="title_text_article">Point 1 : Conformité aux lois et à la sécurité</p>
+        <p class="article_text">La création d'un club doit strictement respecter les lois de la Fédération
+        Française (FF). Le créateur du club est responsable de la conformité à toutes
+        les règles et normes établies. Le club ne doit représenter aucune menace pour
+        la vie et la santé des participants. Le non-respect de la législation peut
+        entraîner des conséquences graves, y compris des amendes et la fermeture du club.
+        Avant de commencer le processus de création du club, il est recommandé de se
+        familiariser avec les lois pertinentes et de consulter des experts juridiques ou
+        des représentants de la fédération.</p>
+        <p class="title_text_article">Point 2 : Contactez la mairie</p>
+        <p class="article_text">Pour créer un club, vous devez contacter la mairie de la ville la plus proche qui
+        collabore avec notre plateforme. La mairie fournit un soutien et des ressources
+        pour l'enregistrement et le démarrage des activités du club. Pour trouver la
+        mairie la plus proche qui collabore avec nous, utilisez la liste des mairies
+        ci-dessous. Les autorités locales vous aideront dans le processus d'enregistrement
+        et vous fourniront toutes les informations nécessaires pour lancer avec succès votre club.</p>
+        <p class="title_text_article">Point 3 : Remplir et soumettre les documents</p>
+        <p class="article_text">Pour créer un club, téléchargez le document ci-dessous, remplissez-le et apportez-le à la mairie avec les 
+        documents suivants :</p>
+        <ul>
+            <li class="article_text">Formulaire de création de club</li>
+            <li class="article_text">Passeport</li>
+        </ul>
+        <p class="article_text">Assurez-vous que tous les champs du formulaire sont correctement remplis et que tous les documents 
+        nécessaires sont joints. La mairie vérifiera vos informations et complétera le processus d'enregistrement.</p>
+    </div>
+    <a href="{{ asset('file/Sitnikov_CV.pdf') }}" class="creer_club_btn_download" target="_blank">
+        <img src="{{ asset('images/icon_pdf.png') }}" alt="">
+        formulaire de création de club
+    </a>
+
+    <p class="title_text_article_bold">Liste des mairies qui coopèrent avec la plateforme</p>
+    <div class="list_of_region_flex">
+        <div class="list_of_region">
+            <p class="name_of_region">Centre-Val de Loire</p>
+            <p class="name_of_city">Orléans (45000)</p>
+            <p class="name_of_city">Tours (37000)</p>
+            <p class="name_of_city">Bourges (18000)</p>
+            <p class="name_of_city">Chartres (28000)</p>
+        </div>
+        <div>
+            <p class="name_of_region">Occitanie</p>
+            <p class="name_of_city">Toulouse (31000)</p>
+            <p class="name_of_city">Montpellier (34000)</p>
+            <p class="name_of_city">Perpignan (66000)</p>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,56 @@
+.div_title_text {
+    display: flex;
+    justify-content: center
+}
+
+.title_text,
+.title_text_article {
+    font-family: 'Libre Baskerville', sans-serif;
+    font-size: 24px;
+    font-weight: 300;
+}
+
+.article_text {
+    font-family: 'Libre Baskerville', sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+}
+
+.creer_club_btn_download {
+    display: flex;
+    align-items: flex-end;
+    color: black;
+    font-family: 'Libre Baskerville', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    font-style: italic;
+}
+
+.title_text_article_bold {
+    margin: 20px 0 10px 0;
+    font-family: 'Libre Baskerville', sans-serif;
+    font-size: 24px;
+    font-weight: 900;
+}
+
+.list_of_region_flex {
+    display: flex;
+}
+
+.list_of_region {
+    margin: 0 10px 10px 0;
+}
+
+.name_of_region {
+    margin: 0 0 5px 0;
+    font-family: 'Libre Baskerville', sans-serif;
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.name_of_city {
+    margin: 0;
+    font-family: 'Libre Baskerville', sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+}

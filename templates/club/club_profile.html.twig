@@ -1,0 +1,298 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{club.name}}{% endblock %}
+
+{% block body %}
+<div style="background-color: #e3e3e3;">
+    <div class="background_photo_profile">
+        {% if club.backGroundAvatar %}
+        <img src="{{ asset('/uploads/avatar_background_club/' ~ club.backGroundAvatar) }}" alt="photo_profile">
+        {% else %}
+        <img src="{{ asset('images/background_photo.png') }}" alt="photo_profile">
+        {% endif %}
+    </div>
+
+    <div class="box_profile">
+        {# HEAD PROFILE #}
+        <div class="head_profile">
+            <div class="profile_setting_photo_div">
+                {% if club.avatar %}
+                <div class="img_head_profile">
+                    <img src="{{ asset('/uploads/avatars_club/' ~ club.Avatar) }}" alt="photo_profile">
+                </div>
+                {% else %}
+                <div class="img_head_profile">
+                    <img src="{{ asset('images/god.jpg') }}" alt="photo_profile">   
+                </div>
+                {% endif %}
+
+                {% if app.user %} 
+                    {% if app.user.id != club.owner %} 
+                         {% if requestSend %}
+                            <a href="{{ path('club_delete_request', {'id': club.id}) }}" class="creer_club_photo_changer_photo">Annuler la demande</a>
+                        {% else %}
+                            <a href="{{ path('club_request', {'id': club.id}) }}" class="creer_club_photo_changer_photo">Rejoindre</a>
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+            
+
+            </div>
+            <div class="information_text_head_profile">
+                <p class="name_text_head_profile">{{ club.name }}</p>
+                <p class="name_text_head_profile">Participants: </p>
+                <p class="activity_text_head_profile">0</p>
+
+                {% if club.description %}
+                <p class="name_text_head_profile">{{ club.description }}</p>
+                {% else %}
+                {% endif %}
+            </div>
+            <div class="div_with_btn_head_profile">
+
+            {% if is_granted('ROLE_ROOT') %}
+            <a class="btn_modifier_profile" style="height: 28px;" href="#" onclick="openPostForm()">
+                Créer un post
+            </a>
+            <a class="btn_modifier_profile" style="height: 28px;" href="{{ path('modifier_profile_club', {'id': club.id}) }}">
+                Modifier club
+            <span class="divider_btn_modifier_profile"></span>
+            <img src="{{ asset('images/modifier_profile_btn_logo.png') }}" alt="Gear Icon">
+            </a> 
+            {% elseif isOwner %}
+                <a class="btn_modifier_profile" style="height: 28px;" href="#" onclick="openPostForm()">
+                    Créer un post
+                </a>
+                <a class="btn_modifier_profile" style="height: 28px;" href="{{ path('modifier_profile_club', {'id': club.id}) }}">
+                    Modifier club
+                <span class="divider_btn_modifier_profile"></span>
+                <img src="{{ asset('images/modifier_profile_btn_logo.png') }}" alt="Gear Icon">
+                </a>                    
+            {% endif %}
+
+
+            </div>
+        </div>
+        {# BODY PROFILE #}
+       <div class="body_profile_tabs">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
+                     type="button" role="tab" aria-controls="home" aria-selected="true" style="border: 0;">Activités</button>
+                </li>
+
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="participants_club-tab" data-bs-toggle="tab" data-bs-target="#participants_club"
+                     type="button" role="tab" aria-controls="participants_club" aria-selected="false" style="border: 0;">Participants</button>
+                </li>
+                {% if app.user %}
+                    {% if app.user.id == club.owner %}
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="Demandes-tab" data-bs-toggle="tab" data-bs-target="#Demandes"
+                        type="button" role="tab" aria-controls="Demandes" aria-selected="false" style="border: 0;">Demandes</button>
+                    </li>                    
+                    {% endif %}
+                {% endif %}
+            </ul>
+       </div>
+        <div class="body_profile_content">
+            <div class="tab-content" id="myTabContent">
+                {# Activités#}
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <div class="profile_mes_clubs">
+                        {# FORM FOR MAKE ACTIVITY #}
+                        <div id="postForm" style="display: none;" class="activites_post">
+                            <div class="activites_post_flex">
+                                <div class="activites_post_avatar">
+                                    <img src="{{ asset('/uploads/avatars_club/' ~ club.Avatar) }}" alt="">
+                                </div>
+                                <div class="activites_post_text_div">
+                                    <p class="activites_post_text_solid">{{club.Name}}</p>
+                                    <p class="activites_post_text">{{club.region}}</p>
+                                    <p class="activites_post_text">Date de publication: </p>
+                                    <p class="activites_post_text">{{ "now"|date("d.m.Y") }}</p>
+                                </div>
+                                <div style="flex: 1;">
+
+                                </div>
+                                <div style="display: flex;">
+                                    <button class="activites_post_cancel" id="activites_post_cancel_botton" onclick="closePostForm()">Annuler</button>
+                                    <button type="submit" id="btn_submit_form_activite" class="activites_post_send">Envoyer</button>
+                                </div>
+                            </div>
+                            <form method="post" id="newPostForm" enctype="multipart/form-data" style="padding: 10px;">
+                                <div>
+                                    <textarea class="form-control" name="content" placeholder="Votre text..."></textarea>
+                                </div>
+                                <div id="div_for_error">
+
+                                </div>
+                                <div class="activites_post_photos" id="activites_post_photos">
+
+                                </div>
+                                
+                                <div class="activite_post_all_photo" id="activite_regarder_photo_preview" style="display: none;">
+                                    <button class="activite_regarder_photo" disabled>Plus de photo...</button>                                    
+                                </div>
+
+                                <div>
+                                    <label class="activites_post_add_photo" for="activite_file_input">Joindre des photos</label>
+                                    <input style="display: none;" type="file" id="activite_file_input" name="images[]" accept="image/*" multiple>
+                                </div>
+                            </form>
+                        </div>
+                        {# SHOW ACTIVITY #}
+                        {% for post in posts|reverse %} 
+                        <div class="activites_post">
+                            <div class="activites_post_flex">
+                                <div class="activites_post_avatar">
+                                    <img src="{{ asset('/uploads/avatars_club/' ~ club.Avatar) }}" alt="">                                    
+                                </div>
+                                <div class="activites_post_text_div">
+                                    <p class="activites_post_text_solid">{{club.Name}}</p>
+                                    <p class="activites_post_text">{{club.region}}</p>
+                                    <p class="activites_post_text">Date de publication: </p>
+                                    <p class="activites_post_text">{{ post.updatedAt|date('d.m.Y H:i') }}</p>
+                                </div>
+                                <div style="flex: 1;">
+
+                                </div>
+                                <div>
+                                {% if app.user %}
+                                    {% if app.user.id == club.owner %}
+                                    <a class="activites_post_delete" href="{{ path('club_delete_post', {'idPost': post.id,'idClub' : club.id }) }}">Supprimer</a>
+                                    {% endif %}
+                                {% endif %}
+                                </div>
+                            </div>
+                            <div style="padding: 0px 10px;">
+                                <p class="activites_post_text"> {{post.content}} </p>
+                            </div>
+                            {% if post.images %}
+                                <div class="activites_post_photos 
+                                    {% if post.images|length == 1 %}activite_one_photo 
+                                    {% elseif post.images|length == 2 %}activite_less_2_photo 
+                                    {% elseif post.images|length > 2 %}activite_more_2_photo {% endif %} ">
+                                    
+                                    {% for image in post.images %}
+                                        {% if loop.index <= 6 %}
+                                        <a href="{{ asset(image) }}" target="_blank">
+                                            <img src="{{ asset(image) }}" alt="Ooups">
+                                        </a>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>  
+                                <div class="activite_post_all_photo">
+                                    {% if post.images|length > 6 %}
+                                        <a href="{{ path('post_all_photos', {'id': post.id }) }}" 
+                                        id="post_all_photos" 
+                                        class="activite_regarder_photo_res" 
+                                        data-post-id="{{ post.id }}"
+                                        data-bs-toggle="modal" data-bs-target="#modal_for_post_photo">Plus de photo...</a>
+                                    {% endif %}
+                                </div>                             
+                            {% endif %}
+                        </div>                
+                        {% endfor %}
+
+                    </div>
+                </div>
+                
+                {# Participants #}
+                <div class="tab-pane fade" id="participants_club" role="tabpanel" aria-labelledby="participants_club">
+                    <div class="profile_mes_clubs">
+                        
+                        {% for user in userList %}
+                            <div class="profile_mes_clubs_resulta">
+                                <div class="main_root_resulta_image">
+                                    {% if user.Avatar %}
+                                    <img src="{{ asset('/uploads/avatars_user/' ~ user.Avatar) }}" alt="No photo">
+                                    {% else %}
+                                    <img src="{{ asset('images/god.jpg') }}" alt="">
+                                    {% endif %}
+                                </div>
+                                <div class="main_root_resulta_text">
+                                    <p class="main_root_resulta_text_name"> {{ user.name }} </p>
+                                    <p class="main_root_resulta_text_info"> ID: {{ user.id }}</p>
+                                </div>
+                                <div class="main_root_resulta_flex">
+    
+                                </div>
+                                <div class="main_root_resulta_btn">
+                                    {% if app.user %}
+                                    <a class="activites_post_cancel" style="text-decoration: none;" href="{{ path('app_profile_user', {'id': user.id }) }}">Regarder profile</a>
+                                        {% if app.user.id == club.owner %}
+                                        <a class="activites_post_delete" href="{{ path('club_delete_user_request', {'idUser': user.id, 'idClub': club.id}) }}">Supprimer</a>
+                                        {% endif %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+
+                {# Demandes #}
+                {% if app.user %}
+                    {% if app.user.id == club.owner %}
+                    <div class="tab-pane fade" id="Demandes" role="tabpanel" aria-labelledby="Demandes">
+                        <div class="profile_mes_clubs">
+
+                            {% for request in requestList %}
+                            <div class="profile_mes_clubs_resulta">
+                                <div class="main_root_resulta_image">
+                                    {% if request.user.Avatar %}
+                                    <img src="{{ asset('/uploads/avatars_user/' ~ request.user.Avatar) }}" alt="No photo">
+                                    {% else %}
+                                    <img src="{{ asset('images/god.jpg') }}" alt="">
+                                    {% endif %}
+                                </div>
+                                <div class="main_root_resulta_text">
+                                    <p class="main_root_resulta_text_name"> {{ request.user.name }} </p>
+                                    <p class="main_root_resulta_text_info"> ID: {{ request.user.id }}</p>
+                                </div>
+                                <div class="main_root_resulta_flex">
+
+                                </div>
+                                <div class="main_root_resulta_btn">
+                                    <a href="{{ path('club_accepte_request', {id: request.id}) }}" class="activites_post_send" style="text-decoration: none;">Accepter</a>
+                                    <a href="{{ path('club_denied_request', {id: request.id}) }}" class="activites_post_delete">Refuser</a>
+                                </div>
+                            </div>
+                            {% endfor %}
+
+                        </div>
+                    </div>          
+                    {% endif %}
+                {% endif %}
+            </div>
+        </div>
+
+    </div>  
+</div>
+
+ {# WINDOW MODAL #}
+
+<div class="modal fade" id="modal_for_post_photo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Toutes les photos</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="modal-images-container">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="club-info" data-club-id="{{ club.id }}"></div>
+
+{% block javascripts %}
+{{ parent() }} 
+{{ encore_entry_script_tags('new_post') }}
+{% endblock %}
+
+{% endblock %}
