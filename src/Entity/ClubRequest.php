@@ -14,7 +14,7 @@ class ClubRequest
     private ?int $id = null;
 
     #[ORM\ManyToOne(inversedBy: 'clubRequests')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: false, onDelete: "CASCADE")]
     private ?User $User = null;
 
     #[ORM\ManyToOne(inversedBy: 'clubRequests')]
