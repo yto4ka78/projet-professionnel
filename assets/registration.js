@@ -34,11 +34,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
         } else if (data.success) {
-            window.location.href = data.redirect_url;
+            showNotification();
         }
         
     }
 });
+
+//Notification
+function showNotification() {
+    const notification = document.getElementById('notification');
+    notification.style.display = 'block';
+    notification.classList.add('show');
+}
 
 // form login
 
@@ -68,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 window.location.href = data.redirect_url;
             }
         } else {
-            feedback.textContent = "L'adresse e-mail ou le mot de passe est incorrect.";
+            feedback.textContent = data.message;
             feedback.style.display = 'block';
         }
     }

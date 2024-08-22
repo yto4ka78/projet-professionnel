@@ -70,6 +70,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: ClubRequest::class, mappedBy: 'User', orphanRemoval: true)]
     private Collection $clubRequests;
 
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $confirmationToken = null;
+
+    #[ORM\Column(type: 'boolean')]
+    private bool $emailConfirmed = false;
+
     public function __construct()
     {
         $this->updatedAt = new DateTimeImmutable();
@@ -314,5 +320,26 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    public function getConfirmationToken(): ?string
+    {
+        return $this->confirmationToken;
+    }
+
+    public function setConfirmationToken(?string $confirmationToken): self
+    {
+        $this->confirmationToken = $confirmationToken;
+
+        return $this;
+    }
     
+    public function isEmailConfirmed(): bool
+    {
+    return $this->emailConfirmed;
+    }
+
+    public function setEmailConfirmed(bool $confirmed): self
+    {
+        $this->emailConfirmed = $confirmed;
+        return $this;
+    }
 }

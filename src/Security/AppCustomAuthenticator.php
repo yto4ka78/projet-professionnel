@@ -2,6 +2,7 @@
 
 namespace App\Security;
 
+use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,9 +24,11 @@ class AppCustomAuthenticator extends AbstractLoginFormAuthenticator
     use TargetPathTrait;
 
     public const LOGIN_ROUTE = 'app_login';
+    private $userRepository;
 
-    public function __construct(private UrlGeneratorInterface $urlGenerator)
+    public function __construct(private UrlGeneratorInterface $urlGenerator, UserRepository $userRepository)
     {
+        $this->userRepository = $userRepository;
     }
     
     public function authenticate(Request $request): Passport
@@ -46,6 +49,13 @@ class AppCustomAuthenticator extends AbstractLoginFormAuthenticator
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
+        $email = $request->request->get('email', '');
+        $user = $this->userRepository->findOneBy(['email' => $email]);
+
+        // Проверяем, подтвержден ли email
+        if (!$user || !$user->isEmailConfirmed()) {
+            return new JsonResponse(['success' => false, 'message' => 'Il faut confirmer email']);
+        }
         if ($request->isXmlHttpRequest()) {
             return new JsonResponse(['success' => true, 'redirect_url' => $this->urlGenerator->generate('app_profile')]);
         } 
@@ -60,7 +70,7 @@ class AppCustomAuthenticator extends AbstractLoginFormAuthenticator
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception): Response
     {
         if ($request->isXmlHttpRequest()) {
-            return new JsonResponse(['success' => false, 'message' => $exception->getMessageKey()], 400);
+            return new JsonResponse(['success' => false, 'message' => $exception = 'L\'adresse e-mail ou le mot de passe est incorrect.'], 400);
         }
 
         return parent::onAuthenticationFailure($request, $exception);

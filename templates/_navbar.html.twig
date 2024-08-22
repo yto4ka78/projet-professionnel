@@ -41,7 +41,7 @@
 
 
 {# Registration  #}
-{# Lel #}
+{# Lol #}
 
 {% set registrationForm = global_form() %}
 
@@ -52,6 +52,9 @@
             <div style="width: 396px; margin: auto;">
                 <img src="{{ asset('images/logo.png') }}" alt="logo" style="width: 98px; padding-top: 10px">
                 <p class="first_text_main_div">Rejoignez-nous en <br> créant votre compte</p>
+                <div id="notification" class="notification">
+                    <p>Email a été envoyé!</p>
+                </div>
                 {{ form_start(registrationForm, { 'method': 'post', 'attr': { 'id': 'form_register_js', 'data-url': path('app_register')} }) }}
                 <div>
                         {{ form_label(registrationForm.name, null, { 'label_attr': { 'class': 'form_registr' } }) }}
@@ -106,11 +109,10 @@
             <div style="width: 396px; margin: auto;">
                 <img src="{{ asset('images/logo.png') }}" alt="logo" style="width: 98px; padding-top: 10px">
                 <p class="first_text_main_div" style="margin: 0px;">Bienvenue, veuillez vous <br> connecter à votre compte</p>
-                <form method="post" id="form_login_js"  data-url="{{ path('app_login') }}">
+                <form method="post" id="form_login_js" data-url="{{ path('app_login') }}">
                     
                     <div class="invalid-feedback-login"></div>
                     
-                
                     <label for="inputEmail">Email adresse</label>
                     <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form_input" autocomplete="email" required autofocus>
 
